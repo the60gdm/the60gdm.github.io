@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#060606" />
+  <title>60GDM — Creative Digital Marketing Agency</title>
+  <meta name="description" content="60GDM (Sixty — The Group of Digital Marketing) is a creative, international digital marketing agency. From clicks to conversions — strategy, content, code and 3D that drive real results." />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="60GDM — Creative Digital Marketing Agency" />
+  <meta property="og:description" content="From clicks to conversions. We help ambitious brands skyrocket their online presence." />
+  <meta property="og:url" content="https://60gdm.odoo.com/" />
+  <meta property="og:image" content="assets/og-image.svg" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Manrope:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ============ PRELOADER ============ -->
+  <div class="preloader" id="preloader" aria-hidden="true">
+    <div class="preloader__inner">
+      <div class="preloader__brand">
+        <span class="preloader__logo">60GDM</span>
+        <span class="preloader__tag">Sixty — The Group of Digital Marketing</span>
+      </div>
+      <div class="preloader__counter">
+        <span id="preloader-count">0</span><span class="preloader__pct">%</span>
+      </div>
+    </div>
+    <div class="preloader__bar"><span id="preloader-progress"></span></div>
+  </div>
+
+  <!-- ============ GRAIN + CURSOR ============ -->
+  <div class="grain" aria-hidden="true"></div>
+  <div class="cursor" id="cursor" aria-hidden="true"></div>
+  <div class="cursor-dot" id="cursor-dot" aria-hidden="true"></div>
+
+  <!-- ============ WEBGL CANVAS ============ -->
+  <div class="hero-canvas" id="hero-canvas" aria-hidden="true">
+    <canvas id="webgl"></canvas>
+    <div class="hero-canvas__fallback"></div>
+  </div>
+
+  <!-- ============ NAV ============ -->
+  <header class="nav" id="nav">
+    <a href="#top" class="nav__logo" data-cursor="hover" aria-label="60GDM home">
+      <span class="nav__logo-mark">60</span><span class="nav__logo-text">GDM</span>
+    </a>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="#work" data-cursor="hover">Work</a>
+      <a href="#services" data-cursor="hover">Services</a>
+      <a href="#about" data-cursor="hover">Studio</a>
+      <a href="#contact" data-cursor="hover">Contact</a>
+    </nav>
+    <a href="#contact" class="btn btn--pill nav__cta" data-cursor="hover" data-magnetic>
+      <span>Let's talk</span>
+      <span class="btn__dot"></span>
+    </a>
+    <button class="nav__burger" id="burger" aria-label="Open menu" aria-expanded="false" data-cursor="hover">
+      <span></span><span></span>
+    </button>
+  </header>
+
+  <!-- ============ MOBILE MENU OVERLAY ============ -->
+  <div class="menu" id="menu" aria-hidden="true">
+    <nav class="menu__links" aria-label="Mobile">
+      <a href="#work" data-menu-link><span class="menu__index">01</span> Work</a>
+      <a href="#services" data-menu-link><span class="menu__index">02</span> Services</a>
+      <a href="#about" data-menu-link><span class="menu__index">03</span> Studio</a>
+      <a href="#contact" data-menu-link><span class="menu__index">04</span> Contact</a>
+    </nav>
+    <div class="menu__foot">
+      <a href="mailto:the60gdm@gmail.com">the60gdm@gmail.com</a>
+      <a href="https://wa.me/923333611566" target="_blank" rel="noopener">+92 333 3611566</a>
+    </div>
+  </div>
+
+  <main id="top">
+
+    <!-- ============ HERO (3D logo is the star) ============ -->
+    <section class="hero" id="hero">
+      <div class="hero__meta hero__meta--tl">
+        <span class="tick"></span> Creative Digital Marketing Agency
+      </div>
+      <div class="hero__meta hero__meta--tr">
+        <span>Worldwide</span> / Est. Studio
+      </div>
+
+      <p class="hero__eyebrow reveal-fade">Sixty — The Group of Digital Marketing</p>
+
+      <div class="hero__bottom">
+        <div class="hero__lockup">
+          <p class="hero__tag reveal-fade">From clicks to <em class="serif-italic">conversions.</em></p>
+        </div>
+        <div class="hero__actions reveal-fade">
+          <a href="#contact" class="btn btn--solid" data-cursor="hover" data-magnetic>
+            <span>Start a project</span>
+          </a>
+          <a href="#work" class="btn btn--ghost" data-cursor="hover" data-magnetic>
+            <span>View work</span>
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <a href="#work" class="hero__scroll" data-cursor="hover" aria-label="Scroll down">
+        <span>Scroll to explore</span>
+        <span class="hero__scroll-line"><i></i></span>
+      </a>
+    </section>
+
+    <!-- ============ MANIFESTO (transparent — logo re-poses through it) ============ -->
+    <section class="manifesto" id="manifesto">
+      <div class="manifesto__label"><span class="tick"></span> (02 / What we do)</div>
+      <p class="manifesto__text" data-split>Strategy, content, code &amp; 3D — <em class="serif-italic">engineered to convert.</em></p>
+    </section>
+
+    <!-- ============ MARQUEE ============ -->
+    <section class="marquee" aria-hidden="true">
+      <div class="marquee__track">
+        <span>Social Media <b>✦</b> Google Ads <b>✦</b> 3D Animation <b>✦</b> Shopify <b>✦</b> Influencer Marketing <b>✦</b> Video Editing <b>✦</b> WordPress <b>✦</b> Email Campaigns <b>✦</b> Branding <b>✦</b> </span>
+        <span>Social Media <b>✦</b> Google Ads <b>✦</b> 3D Animation <b>✦</b> Shopify <b>✦</b> Influencer Marketing <b>✦</b> Video Editing <b>✦</b> WordPress <b>✦</b> Email Campaigns <b>✦</b> Branding <b>✦</b> </span>
+      </div>
+    </section>
+
+    <!-- ============ ABOUT / INTRO ============ -->
+    <section class="intro" id="about">
+      <div class="intro__label"><span class="tick"></span> (About the studio)</div>
+      <h2 class="intro__statement" data-split>
+        We're a creative, international digital marketing agency building brands that
+        <em class="serif-italic">grow, connect and thrive</em> — turning bold ideas into campaigns, code and 3D that deliver real results.
+      </h2>
+      <div class="intro__grid">
+        <div class="intro__col reveal-fade">
+          <p>Sixty — The Group of Digital Marketing. A partner for startups and growing businesses ready to elevate their presence online.</p>
+        </div>
+        <div class="intro__col reveal-fade">
+          <p>We craft powerful strategies and creative campaigns end-to-end: from the first click to the final conversion, across every channel that matters.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ STATS ============ -->
+    <section class="stats">
+      <div class="stat" data-reveal>
+        <span class="stat__num" data-count="150" data-suffix="+">0</span>
+        <span class="stat__label">Projects delivered</span>
+      </div>
+      <div class="stat" data-reveal>
+        <span class="stat__num" data-count="40" data-suffix="+">0</span>
+        <span class="stat__label">Happy clients</span>
+      </div>
+      <div class="stat" data-reveal>
+        <span class="stat__num" data-count="12" data-suffix="+">0</span>
+        <span class="stat__label">Countries served</span>
+      </div>
+      <div class="stat" data-reveal>
+        <span class="stat__num" data-count="5" data-suffix=".0">0</span>
+        <span class="stat__label">Average rating</span>
+      </div>
+    </section>
+
+    <!-- ============ SERVICES ============ -->
+    <section class="services" id="services">
+      <div class="section-head">
+        <div class="section-head__label"><span class="tick"></span> (What we do)</div>
+        <h2 class="section-head__title" data-split>Services that move the <em class="serif-italic">needle.</em></h2>
+      </div>
+
+      <div class="svc-list" id="svc-list">
+        <article class="svc" data-svc data-cursor="hover">
+          <div class="svc__row">
+            <span class="svc__index">01</span>
+            <h3 class="svc__name">Digital Marketing</h3>
+            <span class="svc__plus" aria-hidden="true"></span>
+          </div>
+          <div class="svc__panel">
+            <div class="svc__desc">
+              <p>Full-funnel growth — from awareness to conversion. We plan, launch and optimise campaigns that turn attention into revenue.</p>
+            </div>
+            <ul class="svc__tags">
+              <li>Social Media Marketing</li>
+              <li>Influencer Marketing</li>
+              <li>Google &amp; YouTube Ads</li>
+              <li>E-commerce Marketing</li>
+              <li>Email Campaigns</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="svc" data-svc data-cursor="hover">
+          <div class="svc__row">
+            <span class="svc__index">02</span>
+            <h3 class="svc__name">Web Development</h3>
+            <span class="svc__plus" aria-hidden="true"></span>
+          </div>
+          <div class="svc__panel">
+            <div class="svc__desc">
+              <p>Fast, beautiful, conversion-ready websites and stores — built on the platforms your business actually runs on.</p>
+            </div>
+            <ul class="svc__tags">
+              <li>WordPress</li>
+              <li>Shopify &amp; E-commerce</li>
+              <li>Odoo Setup</li>
+              <li>Speed Optimization</li>
+              <li>Domain &amp; Hosting</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="svc" data-svc data-cursor="hover">
+          <div class="svc__row">
+            <span class="svc__index">03</span>
+            <h3 class="svc__name">Video &amp; 3D Animation</h3>
+            <span class="svc__plus" aria-hidden="true"></span>
+          </div>
+          <div class="svc__panel">
+            <div class="svc__desc">
+              <p>Scroll-stopping visuals. Cinematic ads, photoreal 3D product renders and short-form content built to be watched — and shared.</p>
+            </div>
+            <ul class="svc__tags">
+              <li>3D Product Animation</li>
+              <li>Cosmetic &amp; Care 3D Ads</li>
+              <li>Promo &amp; Ad Videos</li>
+              <li>Long-form Editing</li>
+              <li>Reels · Shorts · TikToks</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="svc" data-svc data-cursor="hover">
+          <div class="svc__row">
+            <span class="svc__index">04</span>
+            <h3 class="svc__name">Research &amp; Academic</h3>
+            <span class="svc__plus" aria-hidden="true"></span>
+          </div>
+          <div class="svc__panel">
+            <div class="svc__desc">
+              <p>Rigorous, original and polished. Support for students and businesses that need research and documents done right.</p>
+            </div>
+            <ul class="svc__tags">
+              <li>Thesis Assistance</li>
+              <li>Academic Presentations</li>
+              <li>Case Studies &amp; Reports</li>
+              <li>Plagiarism-Free Content</li>
+              <li>Bachelor · Master · PhD</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ WORK ============ -->
+    <section class="work" id="work">
+      <div class="section-head">
+        <div class="section-head__label"><span class="tick"></span> (Selected work)</div>
+        <h2 class="section-head__title" data-split>Results we're <em class="serif-italic">proud of.</em></h2>
+      </div>
+
+      <div class="work__grid">
+        <a href="#contact" class="wcard" data-cursor="view" data-reveal>
+          <div class="wcard__media wcard__media--1">
+            <span class="wcard__num">01</span>
+          </div>
+          <div class="wcard__foot">
+            <div>
+              <h3 class="wcard__title">GiveGetFree</h3>
+              <p class="wcard__sub">Crowdfunding growth · Indiegogo</p>
+            </div>
+            <div class="wcard__tags"><span>Ads</span><span>Influencer</span><span>Email</span></div>
+          </div>
+        </a>
+
+        <a href="#contact" class="wcard" data-cursor="view" data-reveal>
+          <div class="wcard__media wcard__media--2">
+            <span class="wcard__num">02</span>
+          </div>
+          <div class="wcard__foot">
+            <div>
+              <h3 class="wcard__title">FAHERBALIS</h3>
+              <p class="wcard__sub">Brand website · Design &amp; build</p>
+            </div>
+            <div class="wcard__tags"><span>Web</span><span>UI/UX</span><span>Dev</span></div>
+          </div>
+        </a>
+
+        <a href="#contact" class="wcard wcard--tall" data-cursor="view" data-reveal>
+          <div class="wcard__media wcard__media--3">
+            <span class="wcard__num">03</span>
+          </div>
+          <div class="wcard__foot">
+            <div>
+              <h3 class="wcard__title">3D Product Ads</h3>
+              <p class="wcard__sub">Cosmetics &amp; consumer goods</p>
+            </div>
+            <div class="wcard__tags"><span>3D</span><span>Motion</span></div>
+          </div>
+        </a>
+
+        <a href="#contact" class="wcard" data-cursor="view" data-reveal>
+          <div class="wcard__media wcard__media--4">
+            <span class="wcard__num">04</span>
+          </div>
+          <div class="wcard__foot">
+            <div>
+              <h3 class="wcard__title">Your brand here</h3>
+              <p class="wcard__sub">Let's build your next case study</p>
+            </div>
+            <div class="wcard__tags"><span>Start</span></div>
+          </div>
+        </a>
+      </div>
+
+      <div class="work__cases">
+        <blockquote class="case reveal-fade">
+          <p>“Working with 60GDM was a great experience! They handled our Indiegogo live campaign, ran high-performing Facebook and YouTube ads, and helped us find the right influencers. Their Mailchimp email marketing was a big success.”</p>
+          <footer><strong>Bartlomiej Szryt</strong> — CEO, GiveGetFree</footer>
+        </blockquote>
+        <blockquote class="case reveal-fade">
+          <p>“60GDM did an amazing job creating our website! They understood our brand and delivered a beautiful, user-friendly site on time. Highly professional and great to work with!”</p>
+          <footer><strong>Fatima Ayaz</strong> — Founder, FAHERBALIS</footer>
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- ============ PROCESS ============ -->
+    <section class="process">
+      <div class="section-head">
+        <div class="section-head__label"><span class="tick"></span> (How we work)</div>
+        <h2 class="section-head__title" data-split>A simple path to <em class="serif-italic">real growth.</em></h2>
+      </div>
+      <div class="process__grid">
+        <div class="step" data-reveal>
+          <span class="step__num">01</span>
+          <h3>Discover</h3>
+          <p>We learn your brand, market and goals — then find the fastest levers for growth.</p>
+        </div>
+        <div class="step" data-reveal>
+          <span class="step__num">02</span>
+          <h3>Strategy</h3>
+          <p>A clear, channel-by-channel plan built around measurable outcomes, not vanity metrics.</p>
+        </div>
+        <div class="step" data-reveal>
+          <span class="step__num">03</span>
+          <h3>Create</h3>
+          <p>Campaigns, content, websites and 3D — crafted to stop the scroll and drive action.</p>
+        </div>
+        <div class="step" data-reveal>
+          <span class="step__num">04</span>
+          <h3>Scale</h3>
+          <p>We test, optimise and double down on what works to compound your results over time.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CTA / CONTACT ============ -->
+    <section class="cta" id="contact">
+      <div class="cta__inner">
+        <p class="cta__eyebrow"><span class="tick"></span> (Let's talk)</p>
+        <h2 class="cta__title" data-split>Let's make something <em class="serif-italic">unforgettable.</em></h2>
+        <p class="cta__sub">Tell us about your brand and where you want to go. We'll reply within one business day.</p>
+
+        <form class="cta__form" id="contact-form" novalidate>
+          <div class="field">
+            <input type="text" id="f-name" name="name" placeholder=" " required autocomplete="name" />
+            <label for="f-name">Your name</label>
+          </div>
+          <div class="field">
+            <input type="email" id="f-email" name="email" placeholder=" " required autocomplete="email" />
+            <label for="f-email">Email address</label>
+          </div>
+          <div class="field field--full">
+            <textarea id="f-msg" name="message" placeholder=" " rows="3" required></textarea>
+            <label for="f-msg">What can we help you build?</label>
+          </div>
+          <div class="cta__send">
+            <button type="submit" class="btn btn--solid" data-cursor="hover" data-magnetic data-send="whatsapp">
+              <span>Send via WhatsApp</span>
+            </button>
+            <button type="button" class="btn btn--ghost" data-cursor="hover" data-magnetic data-send="email">
+              <span>Send via Email</span>
+            </button>
+          </div>
+        </form>
+
+        <div class="cta__direct">
+          <a href="mailto:the60gdm@gmail.com" data-cursor="hover">the60gdm@gmail.com</a>
+          <a href="https://wa.me/923333611566" target="_blank" rel="noopener" data-cursor="hover">+92 333 3611566</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="footer__marquee" aria-hidden="true">
+      <div class="footer__track">
+        <span>Let's work together — </span><span>Let's work together — </span><span>Let's work together — </span><span>Let's work together — </span>
+      </div>
+    </div>
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <span class="footer__logo">60GDM</span>
+        <p>Sixty — The Group of Digital Marketing. From clicks to conversions, worldwide.</p>
+      </div>
+      <div class="footer__col">
+        <h4>Menu</h4>
+        <a href="#work" data-cursor="hover">Work</a>
+        <a href="#services" data-cursor="hover">Services</a>
+        <a href="#about" data-cursor="hover">Studio</a>
+        <a href="#contact" data-cursor="hover">Contact</a>
+      </div>
+      <div class="footer__col">
+        <h4>Social</h4>
+        <a href="https://www.instagram.com/" target="_blank" rel="noopener" data-cursor="hover">Instagram</a>
+        <a href="https://www.facebook.com/" target="_blank" rel="noopener" data-cursor="hover">Facebook</a>
+        <a href="https://www.linkedin.com/" target="_blank" rel="noopener" data-cursor="hover">LinkedIn</a>
+        <a href="https://www.youtube.com/" target="_blank" rel="noopener" data-cursor="hover">YouTube</a>
+        <a href="https://www.tiktok.com/" target="_blank" rel="noopener" data-cursor="hover">TikTok</a>
+      </div>
+      <div class="footer__col">
+        <h4>Contact</h4>
+        <a href="mailto:the60gdm@gmail.com" data-cursor="hover">the60gdm@gmail.com</a>
+        <a href="https://wa.me/923333611566" target="_blank" rel="noopener" data-cursor="hover">+92 333 3611566</a>
+      </div>
+    </div>
+    <div class="footer__base">
+      <span>© <span id="year">2026</span> 60GDM. All rights reserved.</span>
+      <button class="footer__top" id="to-top" data-cursor="hover" data-magnetic>Back to top ↑</button>
+    </div>
+  </footer>
+
+  <!-- ============ SCRIPTS ============ -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+  <script src="js/main.js" defer></script>
+
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+      }
+    }
+  </script>
+  <script type="module" src="js/scene.js"></script>
+
+</body>
+</html>
