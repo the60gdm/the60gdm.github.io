@@ -207,7 +207,95 @@ body::after {
 }
 .reel__mute:hover { background: rgba(212,175,55,.2); transform: scale(1.08); }
 
-/* ---------- 11. reduce-motion safety ---------- */
+/* ---------- 12. FLOATING CHARACTER (cutout on black) ---------- */
+.cin-char {
+  position: relative; order: 1; align-self: center; min-height: clamp(430px, 74vh, 780px);
+  display: flex; align-items: flex-end; justify-content: center;
+  transform-style: preserve-3d; will-change: transform;
+}
+@media (min-width: 900px) { .cin-char { order: 2; } }
+.cin-char__img {
+  position: relative; z-index: 2; height: clamp(430px, 74vh, 780px); width: auto; max-width: 100%;
+  object-fit: contain; display: block; filter: contrast(1.05) drop-shadow(0 30px 40px rgba(0,0,0,.8));
+  /* fade the black rectangle edges so the cutout floats seamlessly */
+  -webkit-mask-image: radial-gradient(78% 92% at 50% 46%, #000 82%, transparent 99%);
+          mask-image: radial-gradient(78% 92% at 50% 46%, #000 82%, transparent 99%);
+}
+.cin-char__glow {
+  position: absolute; z-index: 1; left: 50%; top: 34%; width: 78%; height: 60%;
+  transform: translate(-50%,-50%);
+  background: radial-gradient(50% 50% at 50% 50%, rgba(212,175,55,.20), rgba(120,130,170,.10) 45%, transparent 72%);
+  filter: blur(30px); pointer-events: none; animation: glowPulse 5s ease-in-out infinite;
+}
+.cin-char__ped {
+  position: absolute; z-index: 1; left: 50%; bottom: 4%; width: 58%; height: 8%; transform: translateX(-50%);
+  background: radial-gradient(50% 100% at 50% 50%, rgba(212,175,55,.4), transparent 70%);
+  filter: blur(16px); pointer-events: none;
+}
+.cin-char__tag { position: absolute; z-index: 3; left: 50%; bottom: 1%; transform: translateX(-50%); text-align: center; }
+.cin-char__tag b { display: block; font-family: "Bebas Neue", sans-serif; font-size: 1.5rem; color: #fff; letter-spacing: .04em; }
+.cin-char__tag span { font-family: "Montserrat", sans-serif; font-size: 9px; letter-spacing: .26em; text-transform: uppercase; color: var(--champ); }
+.cin-char__img.is-missing { opacity: 0; }
+
+/* ---------- 13. ROTATING SCROLL BADGE ---------- */
+.scroll-badge {
+  position: absolute; z-index: 5; top: 4%; left: 2%; width: clamp(96px, 12vw, 140px); aspect-ratio: 1;
+  display: grid; place-items: center; pointer-events: none;
+}
+.scroll-badge svg { width: 100%; height: 100%; transform-origin: 50% 50%; }
+.scroll-badge text { font-family: "Montserrat", sans-serif; font-size: 13px; font-weight: 500;
+  letter-spacing: .12em; fill: var(--gold); text-transform: uppercase; }
+.scroll-badge__core { position: absolute; font-size: 1.1rem; color: var(--gold);
+  width: 42px; height: 42px; display: grid; place-items: center; border: 1px solid rgba(212,175,55,.5); border-radius: 50%; }
+
+/* ---------- 14. 3D FLOATING ORBS ---------- */
+.orb { position: absolute; z-index: 1; border-radius: 50%; pointer-events: none; will-change: transform;
+  filter: blur(2px); opacity: .8; }
+.orb--1 { width: clamp(80px,10vw,150px); aspect-ratio: 1; top: 16%; left: 6%;
+  background: radial-gradient(35% 35% at 35% 30%, #fff6, transparent 60%), radial-gradient(circle at 60% 65%, #a7b8ff, #3a2b6e 70%); }
+.orb--2 { width: clamp(60px,7vw,110px); aspect-ratio: 1; top: 62%; left: 12%;
+  background: radial-gradient(35% 35% at 35% 30%, #fff8, transparent 60%), radial-gradient(circle at 60% 65%, #f0abfc, #6e2b5e 70%); }
+.orb--3 { width: clamp(90px,11vw,170px); aspect-ratio: 1; top: 24%; right: 8%;
+  background: radial-gradient(35% 35% at 35% 30%, #fff7, transparent 60%), radial-gradient(circle at 60% 65%, #E8C87A, #6e5321 72%); }
+.orb--ring { width: clamp(110px,14vw,220px); aspect-ratio: 1; bottom: 10%; right: 14%;
+  background: none; border: 1px solid rgba(212,175,55,.35); box-shadow: 0 0 40px rgba(212,175,55,.12) inset; filter: none; opacity: .5; }
+@media (max-width: 640px) { .orb--1, .orb--ring { display: none; } }
+
+/* ---------- 15. DYNAMIC SCROLL SHADE (moving light) ---------- */
+#scroll-shade {
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  --ly: 30%; --li: 0.5;
+  background:
+    radial-gradient(50% 38% at 82% var(--ly), rgba(255,255,255, calc(var(--li) * 0.05)), transparent 62%),
+    radial-gradient(46% 34% at 14% calc(100% - var(--ly)), rgba(212,175,55, calc(var(--li) * 0.045)), transparent 60%);
+  transition: background .2s linear;
+}
+
+/* ---------- 16. VIMEO SHOWREEL ---------- */
+.reel__frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: block; }
+.reel__watch {
+  position: absolute; bottom: 14px; right: 14px; z-index: 5;
+  font-family: "Montserrat", sans-serif; font-size: 10.5px; letter-spacing: .18em; text-transform: uppercase;
+  color: var(--champ); background: rgba(0,0,0,.5); border: 1px solid rgba(212,175,55,.4);
+  padding: .5rem .8rem; border-radius: 4px; transition: background .3s, transform .3s;
+}
+.reel__watch:hover { background: rgba(212,175,55,.2); transform: translateY(-2px); }
+
+/* ---------- 17. CAPABILITY "New" badge ---------- */
+.cin-cap__new {
+  font-family: "Montserrat", sans-serif; font-size: 9px; letter-spacing: .12em; text-transform: uppercase;
+  color: #000; background: var(--gold); padding: .12rem .45rem; border-radius: 3px; vertical-align: middle;
+  margin-left: .4rem; animation: glowPulse 2.5s ease-in-out infinite;
+}
+
+/* ---------- 19. fills / fixes ---------- */
+/* pure black behind the cutout so its edges are invisible */
+.cin-founder { background: #000 !important; }
+/* clean 4-column capability grid on desktop (no empty side space) */
+@media (min-width: 1000px) { .cin-caps { grid-template-columns: repeat(4, 1fr); } }
+
+/* ---------- 18. reduce-motion safety ---------- */
 @media (prefers-reduced-motion: reduce) {
-  .cin-ph, .glow-word::before, .stat__num, .wa-float::before { animation: none !important; }
+  .cin-char, .glow-word::before, .stat__num, .wa-float::before, .cin-char__glow, .cin-cap__new,
+  .orb, .scroll-badge svg { animation: none !important; }
 }

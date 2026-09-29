@@ -104,7 +104,7 @@
 
       <div class="hero__bottom">
         <div class="hero__lockup">
-          <p class="hero__tag reveal-fade">From clicks to <em class="serif-italic">conversions.</em></p>
+          <p class="hero__tag reveal-fade">From clicks to <em class="serif-italic glow-word">conversions.</em></p>
         </div>
         <div class="hero__actions reveal-fade">
           <a href="#contact" class="btn btn--solid" data-cursor="hover" data-magnetic>
@@ -158,6 +158,10 @@
     <section class="cin cin-founder" id="founder">
       <span class="cin__glow cin__glow--a"></span>
       <span class="cin__glow cin__glow--b"></span>
+      <span class="orb orb--1" data-orb="0.15"></span>
+      <span class="orb orb--2" data-orb="-0.22"></span>
+      <span class="orb orb--3" data-orb="0.3"></span>
+      <span class="orb orb--ring" data-orb="-0.12"></span>
       <div class="cin__inner">
         <div class="cin-eyebrow">(01 / The mind behind 60GDM)</div>
 
@@ -187,17 +191,20 @@
           <!-- ===== PORTRAIT =====
                Photo:  assets/founder.webp  (already added). Replace that file
                anytime to swap the picture — same name, same place. -->
-          <div class="cin-ph" data-reveal>
-            <img src="assets/founder.webp" alt="60GDM — founder portrait"
+          <div class="cin-char" data-reveal>
+            <!-- rotating circular scroll-text badge -->
+            <div class="scroll-badge" aria-hidden="true">
+              <svg viewBox="0 0 200 200">
+                <defs><path id="badgeCircle" d="M100,100 m-70,0 a70,70 0 1,1 140,0 a70,70 0 1,1 -140,0"/></defs>
+                <text><textPath href="#badgeCircle">60GDM • DIGITAL MARKETING • CREATIVE STUDIO • 3D • ADS • </textPath></text>
+              </svg>
+              <span class="scroll-badge__core">↗</span>
+            </div>
+            <span class="cin-char__glow"></span>
+            <img class="cin-char__img" src="assets/founder.webp" alt="60GDM — founder"
                  onerror="this.classList.add('is-missing')" />
-            <span class="cin-ph__blend cin-ph__blend--v"></span>
-            <span class="cin-ph__blend cin-ph__blend--h"></span>
-            <span class="cin-ph__blend cin-ph__blend--gold"></span>
-            <span class="cin-ph__c cin-ph__c--tl"></span><span class="cin-ph__c cin-ph__c--tr"></span>
-            <span class="cin-ph__c cin-ph__c--bl"></span><span class="cin-ph__c cin-ph__c--br"></span>
-            <span class="cin-ph__wm">60GDM</span>
-            <div class="cin-ph__cap"><b>The Founder</b><span>Sixty — The Group of Digital Marketing</span></div>
-            <div class="cin-ph__ph"><b>60GDM</b><small>Your photo here<br>assets/founder.webp</small></div>
+            <span class="cin-char__ped"></span>
+            <div class="cin-char__tag"><b>The Founder</b><span>Sixty — The Group of Digital Marketing</span></div>
           </div>
 
         </div>
@@ -317,6 +324,9 @@
     <!-- ============ CAPABILITIES (skills / platforms) ============ -->
     <section class="cin" id="capabilities">
       <span class="cin__glow cin__glow--a"></span>
+      <span class="orb orb--2" data-orb="0.2"></span>
+      <span class="orb orb--3" data-orb="-0.28"></span>
+      <span class="orb orb--ring" data-orb="0.16"></span>
       <div class="cin__inner">
         <div class="cin-eyebrow">(Tools &amp; platforms we master)</div>
         <h2 class="cin-title"><span class="l1">The full</span><span class="l2">marketing stack.</span></h2>
@@ -362,6 +372,20 @@
             <ul>
               <li>Figma</li><li>Photoshop</li><li>Illustrator</li><li>Canva</li>
               <li>Logo / Identity</li><li>Brand Kits</li>
+            </ul>
+          </div>
+          <div class="cin-cap" data-reveal>
+            <h4>AI &amp; Automation <span class="cin-cap__new">New</span></h4>
+            <ul>
+              <li>AI Ad Creatives</li><li>AI Video</li><li>Chatbots</li>
+              <li>Zapier / Make</li><li>Auto Funnels</li><li>Smart CRM</li>
+            </ul>
+          </div>
+          <div class="cin-cap" data-reveal>
+            <h4>Analytics &amp; SEO</h4>
+            <ul>
+              <li>GA4</li><li>Meta Pixel</li><li>Search Console</li><li>Heatmaps</li>
+              <li>A/B Testing</li><li>LinkedIn Ads</li><li>Ranking</li>
             </ul>
           </div>
         </div>
@@ -510,10 +534,9 @@
           <span class="reel__badge">Reel · 60GDM 3D</span>
           <span class="cin-card__c cin-card__c--tl"></span><span class="cin-card__c cin-card__c--tr"></span>
           <span class="cin-card__c cin-card__c--bl"></span><span class="cin-card__c cin-card__c--br"></span>
-          <video autoplay muted loop playsinline preload="metadata">
-            <source src="assets/showreel.mp4" type="video/mp4" />
-          </video>
-          <button class="reel__mute" aria-label="Toggle sound" data-cursor="hover">🔇</button>
+          <iframe src="https://player.vimeo.com/video/1231305357?background=1&amp;autoplay=1&amp;loop=1&amp;muted=1&amp;dnt=1"
+                  frameborder="0" allow="autoplay; fullscreen; picture-in-picture" title="60GDM 3D showreel" loading="lazy"></iframe>
+          <a class="reel__watch" href="https://vimeo.com/1231305357" target="_blank" rel="noopener" data-cursor="hover">Watch full reel ↗</a>
         </div>
       </div>
     </section>
@@ -584,7 +607,7 @@
     <section class="cta" id="contact">
       <div class="cta__inner">
         <p class="cta__eyebrow"><span class="tick"></span> (Let's talk)</p>
-        <h2 class="cta__title" data-split>Let's make something <em class="serif-italic">unforgettable.</em></h2>
+        <h2 class="cta__title" data-split>Let's make something <em class="serif-italic glow-word">unforgettable.</em></h2>
         <p class="cta__sub">Tell us about your brand and where you want to go. We'll reply within one business day.</p>
 
         <form class="cta__form" id="contact-form" novalidate>
