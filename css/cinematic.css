@@ -1,0 +1,215 @@
+/* ============================================================
+   60GDM — Cinematic layer
+   Adds the "stacked deck" (ScrollStack), founder block, capabilities
+   grid and journey timeline in a black + champagne-gold aesthetic.
+   Self-contained: only class-scoped rules, safe alongside style.css.
+   ============================================================ */
+
+:root {
+  --cin-gold:   #D4AF37;
+  --cin-champ:  #C99E5D;
+  --cin-bronze: #8C6D4F;
+  --cin-ivory:  #E8DFD8;
+  --cin-muted:  #A8988B;
+  --cin-card:   #0E0C0A;
+  --cin-deep:   #050403;
+  --cin-line:   rgba(140, 109, 79, 0.30);
+}
+
+/* ---------- shared section furniture ---------- */
+.cin {
+  position: relative;
+  padding: clamp(4.5rem, 10vw, 9rem) clamp(1.15rem, 5vw, 5rem);
+  overflow: hidden;
+}
+.cin__inner { position: relative; z-index: 2; max-width: 1200px; margin: 0 auto; }
+
+/* ambient glows */
+.cin__glow {
+  position: absolute; border-radius: 50%; pointer-events: none;
+  filter: blur(170px); opacity: .5; z-index: 1;
+}
+.cin__glow--a { top: 12%; left: 20%; width: 34rem; height: 34rem; background: rgba(212,175,55,.05); }
+.cin__glow--b { bottom: 10%; right: 12%; width: 28rem; height: 28rem; background: rgba(140,109,79,.06); }
+
+.cin-eyebrow {
+  display: flex; align-items: center; gap: 1rem; margin-bottom: 1.3rem;
+  font-family: "Montserrat", sans-serif; font-size: 11px; font-weight: 500;
+  letter-spacing: .35em; text-transform: uppercase; color: var(--cin-gold);
+}
+.cin-eyebrow::after {
+  content: ""; width: 5rem; height: 1px;
+  background: linear-gradient(90deg, rgba(212,175,55,.8), rgba(140,109,79,.4), transparent);
+}
+
+.cin-title {
+  font-family: "Bebas Neue", "Syne", sans-serif;
+  font-weight: 400; text-transform: uppercase;
+  line-height: .86; letter-spacing: .01em;
+  font-size: clamp(2.8rem, 8vw, 6rem); margin: 0 0 1.1rem;
+}
+.cin-title span { display: block; background-clip: text; -webkit-background-clip: text; color: transparent; }
+.cin-title .l1 { background-image: linear-gradient(180deg, #fff, #D5CBC0 55%, #605448); }
+.cin-title .l2 { background-image: linear-gradient(180deg, #F7E7C4, #C99E5D 55%, #543B1A);
+  filter: drop-shadow(0 8px 25px rgba(201,158,93,.30)); }
+.cin-lead {
+  font-family: "Montserrat", sans-serif; font-weight: 300; color: var(--cin-muted);
+  font-size: clamp(.85rem, 1.4vw, 1rem); line-height: 1.85; max-width: 34rem;
+}
+
+/* ============================================================
+   SCROLLSTACK — stacked, pinning deck
+   ============================================================ */
+.scroll-stack-scroller { position: relative; width: 100%; overflow: visible; }
+.scroll-stack-inner { position: relative; width: 100%; padding-top: 3vh; padding-bottom: 42vh; }
+.scroll-stack-card {
+  position: relative; width: 100%; box-sizing: border-box;
+  transform-origin: top center; will-change: transform, filter;
+  backface-visibility: hidden;
+}
+.scroll-stack-end { width: 100%; height: 1px; }
+
+/* the visible card */
+.cin-card {
+  position: relative; overflow: hidden; border-radius: 18px;
+  border: 1px solid rgba(140,109,79,.5); background: var(--cin-card);
+  padding: clamp(1.6rem, 3.5vw, 3rem);
+  box-shadow: 0 25px 70px rgba(0,0,0,.9);
+  transition: border-color .5s ease;
+}
+.cin-card:hover { border-color: var(--cin-gold); }
+.cin-card__flare {
+  position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(212,175,55,.85), transparent);
+}
+/* L-bracket corners */
+.cin-card__c { position: absolute; width: 16px; height: 16px; border-color: rgba(212,175,55,.6);
+  transition: border-color .3s ease; }
+.cin-card:hover .cin-card__c { border-color: var(--cin-gold); }
+.cin-card__c--tl { top: 0; left: 0; border-top: 2px solid; border-left: 2px solid; }
+.cin-card__c--tr { top: 0; right: 0; border-top: 2px solid; border-right: 2px solid; }
+.cin-card__c--bl { bottom: 0; left: 0; border-bottom: 2px solid; border-left: 2px solid; }
+.cin-card__c--br { bottom: 0; right: 0; border-bottom: 2px solid; border-right: 2px solid; }
+/* giant watermark number */
+.cin-card__wm {
+  position: absolute; bottom: -1.6rem; right: -.4rem; line-height: .8;
+  font-family: "Bebas Neue", sans-serif; font-size: clamp(6rem, 16vw, 11rem);
+  color: rgba(234,216,199,.05); pointer-events: none; user-select: none;
+}
+.cin-card__grid { position: relative; z-index: 2; display: grid; gap: 2rem; grid-template-columns: 1fr; }
+@media (min-width: 900px) { .cin-card__grid { grid-template-columns: 7fr 5fr; } }
+
+.cin-card__kicker { display: flex; align-items: center; gap: .75rem; margin-bottom: 1rem;
+  font-family: "Montserrat", monospace; }
+.cin-card__kicker b { color: var(--cin-gold); font-size: 12px; }
+.cin-card__kicker span { color: var(--cin-muted); font-size: 10.5px; letter-spacing: .25em; text-transform: uppercase; }
+.cin-card__title {
+  font-family: "Bebas Neue", "Syne", sans-serif; font-weight: 400; text-transform: uppercase;
+  color: #fff; line-height: .92; letter-spacing: .01em; margin: 0 0 1rem;
+  font-size: clamp(2.1rem, 5vw, 3.6rem); transition: color .4s ease;
+}
+.cin-card:hover .cin-card__title { color: #F7E7C4; }
+.cin-card__desc { font-family: "Montserrat", sans-serif; font-weight: 300; color: #BDB0A4;
+  font-size: clamp(.82rem, 1.3vw, .92rem); line-height: 1.85; max-width: 40rem; margin: 0 0 1.6rem; }
+.cin-card__tags { list-style: none; display: flex; flex-wrap: wrap; gap: .5rem;
+  padding: 1.1rem 0 0; margin: 0; border-top: 1px solid var(--cin-line); }
+.cin-card__tags li {
+  padding: .35rem .7rem; font-family: "Montserrat", sans-serif; font-size: 10px; font-weight: 500;
+  letter-spacing: .16em; text-transform: uppercase; color: #E8D7C5;
+  border: 1px solid rgba(140,109,79,.4); border-radius: 3px; background: #16120E;
+}
+/* right column metrics */
+.cin-card__side { display: flex; flex-direction: column; gap: 1.2rem; }
+@media (min-width: 900px) { .cin-card__side { padding-left: 1.4rem; border-left: 1px solid var(--cin-line); } }
+.cin-card__mlabel { font-family: "Montserrat", monospace; font-size: 9.5px; letter-spacing: .25em;
+  text-transform: uppercase; color: var(--cin-bronze); }
+.cin-metric { display: flex; align-items: center; justify-content: space-between;
+  padding: .8rem .9rem; border: 1px solid var(--cin-line); border-radius: 4px; background: var(--cin-deep); }
+.cin-metric span:first-child { font-family: "Montserrat", monospace; font-size: 10px; color: var(--cin-muted); }
+.cin-metric span:last-child  { font-family: "Montserrat", monospace; font-size: 11px; color: #F7E7C4; }
+.cin-card__cta {
+  display: inline-flex; align-items: center; gap: .7rem; justify-content: center;
+  padding: .9rem 1.4rem; border: 1px solid var(--cin-bronze); background: #16120E;
+  color: #EAD8C7; font-family: "Montserrat", sans-serif; font-size: 11px; font-weight: 500;
+  letter-spacing: .24em; text-transform: uppercase; border-radius: 4px; text-decoration: none;
+  transition: all .3s ease;
+}
+.cin-card__cta:hover { border-color: var(--cin-gold); background: var(--cin-gold); color: #000; }
+
+/* ============================================================
+   FOUNDER / ABOUT with photo + signature
+   ============================================================ */
+.cin-founder__grid { display: grid; gap: clamp(1.6rem, 4vw, 3.5rem); align-items: center;
+  grid-template-columns: 1fr; }
+@media (min-width: 860px) { .cin-founder__grid { grid-template-columns: .82fr 1fr; } }
+
+.cin-photo {
+  position: relative; aspect-ratio: 4 / 5; border-radius: 16px; overflow: hidden;
+  border: 1px solid rgba(140,109,79,.5); background:
+    radial-gradient(120% 120% at 50% 0%, #17130f, #070605 70%);
+  box-shadow: 0 30px 80px rgba(0,0,0,.9);
+}
+.cin-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.cin-photo__flare { position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(180deg, transparent 55%, rgba(0,0,0,.55)); }
+.cin-photo__c { position: absolute; width: 22px; height: 22px; border-color: rgba(212,175,55,.7); z-index: 3; }
+.cin-photo__c--tl { top: 14px; left: 14px; border-top: 2px solid; border-left: 2px solid; }
+.cin-photo__c--br { bottom: 14px; right: 14px; border-bottom: 2px solid; border-right: 2px solid; }
+/* placeholder shown until a real photo is dropped in (img[onerror] adds .is-missing) */
+.cin-photo__ph {
+  position: absolute; inset: 0; display: none; flex-direction: column; gap: .5rem;
+  align-items: center; justify-content: center; text-align: center; padding: 1.5rem;
+}
+.cin-photo img.is-missing { display: none; }
+.cin-photo img.is-missing ~ .cin-photo__ph { display: flex; }
+.cin-photo__ph b { font-family: "Bebas Neue", sans-serif; font-size: 3rem; color: rgba(212,175,55,.5); letter-spacing: .05em; }
+.cin-photo__ph small { font-family: "Montserrat", sans-serif; font-size: 10.5px; letter-spacing: .22em;
+  text-transform: uppercase; color: var(--cin-muted); line-height: 1.7; }
+
+.cin-founder__body p { font-family: "Montserrat", sans-serif; font-weight: 300; color: #C9BCAF;
+  line-height: 1.9; font-size: clamp(.9rem, 1.5vw, 1.05rem); margin: 0 0 1.2rem; }
+.cin-founder__body em { font-style: italic; color: #F7E7C4; }
+.cin-sign { margin-top: 1.6rem; }
+.cin-sign__rule { width: 7rem; height: 1px; margin-bottom: .5rem;
+  background: linear-gradient(90deg, var(--cin-gold), rgba(232,215,197,.6), transparent);
+  box-shadow: 0 0 8px rgba(212,175,55,.4); }
+.cin-sign__name { font-family: "Allura", cursive; font-size: 2.6rem; color: #D8AB64; line-height: 1; }
+.cin-sign__role { font-family: "Montserrat", sans-serif; font-size: 10px; letter-spacing: .28em;
+  text-transform: uppercase; color: var(--cin-muted); margin-top: .3rem; }
+
+/* ============================================================
+   CAPABILITIES grid (skills / platforms)
+   ============================================================ */
+.cin-caps { display: grid; gap: 1.2rem; margin-top: 2.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+.cin-cap { border: 1px solid var(--cin-line); border-radius: 12px; background: var(--cin-card);
+  padding: 1.4rem 1.5rem; transition: border-color .35s ease, transform .35s ease; }
+.cin-cap:hover { border-color: rgba(212,175,55,.6); transform: translateY(-4px); }
+.cin-cap h4 { font-family: "Bebas Neue", sans-serif; font-weight: 400; letter-spacing: .04em;
+  font-size: 1.5rem; color: #F7E7C4; margin: 0 0 .8rem; }
+.cin-cap ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: .4rem; }
+.cin-cap li { font-family: "Montserrat", sans-serif; font-size: 10.5px; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--cin-muted); padding: .3rem .6rem;
+  border: 1px solid rgba(140,109,79,.3); border-radius: 3px; }
+
+/* ============================================================
+   JOURNEY timeline
+   ============================================================ */
+.cin-time { position: relative; margin-top: 2.5rem; padding-left: 1.6rem; }
+.cin-time::before { content: ""; position: absolute; top: .4rem; bottom: .4rem; left: 3px; width: 1px;
+  background: linear-gradient(180deg, var(--cin-gold), rgba(140,109,79,.3), transparent); }
+.cin-tl { position: relative; padding: 0 0 2rem 1.4rem; }
+.cin-tl::before { content: ""; position: absolute; left: -1.6rem; top: .3rem; width: 9px; height: 9px;
+  border-radius: 50%; background: var(--cin-gold); box-shadow: 0 0 12px rgba(212,175,55,.6); }
+.cin-tl:last-child { padding-bottom: 0; }
+.cin-tl__year { font-family: "Montserrat", monospace; font-size: 11px; letter-spacing: .2em;
+  color: var(--cin-gold); }
+.cin-tl__title { font-family: "Bebas Neue", sans-serif; font-size: 1.5rem; color: #fff; margin: .2rem 0 .3rem; }
+.cin-tl__desc { font-family: "Montserrat", sans-serif; font-weight: 300; font-size: .85rem;
+  color: var(--cin-muted); line-height: 1.7; max-width: 34rem; }
+
+/* reduced motion: let the deck simply flow, spaced out */
+@media (prefers-reduced-motion: reduce) {
+  .scroll-stack-inner { padding-bottom: 3vh; }
+  .scroll-stack-card { margin-bottom: 1.5rem !important; transform: none !important; }
+}

@@ -21,8 +21,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Manrope:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet" />
+  <!-- Cinematic layer fonts: condensed display, mono-ish label, signature script -->
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@200;300;400;500;600&family=Allura&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/cinematic.css" />
 </head>
 <body>
 
@@ -150,6 +153,47 @@
       </div>
     </section>
 
+    <!-- ============ FOUNDER / PORTRAIT (cinematic) ============ -->
+    <section class="cin cin-founder" id="founder">
+      <span class="cin__glow cin__glow--a"></span>
+      <span class="cin__glow cin__glow--b"></span>
+      <div class="cin__inner">
+        <div class="cin-eyebrow">(01 / The face behind 60GDM)</div>
+        <div class="cin-founder__grid">
+
+          <!-- ===== PHOTO =====
+               👉 Apni photo daalne ke liye: file ka naam  founder.jpg  rakho
+                  aur  assets/founder.jpg  pe upload kar do (ya mujhe bhej do,
+                  main laga dunga). Jab tak photo nahi aati, neeche placeholder
+                  apne aap dikhega. -->
+          <div class="cin-photo" data-reveal>
+            <img src="assets/founder.jpg" alt="60GDM — founder portrait"
+                 onerror="this.classList.add('is-missing')" />
+            <div class="cin-photo__ph">
+              <b>60GDM</b>
+              <small>Your photo here<br>assets/founder.jpg</small>
+            </div>
+            <span class="cin-photo__flare"></span>
+            <span class="cin-photo__c cin-photo__c--tl"></span>
+            <span class="cin-photo__c cin-photo__c--br"></span>
+          </div>
+
+          <!-- ===== BIO + SIGNATURE ===== -->
+          <div class="cin-founder__body reveal-fade">
+            <p>We are <em>60GDM — Sixty, The Group of Digital Marketing.</em> A creative, international studio that turns ambitious brands into results you can measure.</p>
+            <p>From the first spark of strategy to the final conversion, we handle it all — social, ads, websites, and scroll-stopping 3D. One partner, every channel, real growth.</p>
+            <div class="cin-sign">
+              <div class="cin-sign__rule"></div>
+              <!-- 👉 Apna naam yahan likh sakte ho (signature). -->
+              <div class="cin-sign__name">60GDM</div>
+              <div class="cin-sign__role">Founder · Creative Director</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
     <!-- ============ STATS ============ -->
     <section class="stats">
       <div class="stat" data-reveal>
@@ -260,6 +304,60 @@
       </div>
     </section>
 
+    <!-- ============ CAPABILITIES (skills / platforms) ============ -->
+    <section class="cin" id="capabilities">
+      <span class="cin__glow cin__glow--a"></span>
+      <div class="cin__inner">
+        <div class="cin-eyebrow">(Tools &amp; platforms we master)</div>
+        <h2 class="cin-title"><span class="l1">The full</span><span class="l2">marketing stack.</span></h2>
+        <p class="cin-lead">Every channel, every platform — under one roof. Here's the arsenal we use to grow brands worldwide.</p>
+
+        <div class="cin-caps">
+          <div class="cin-cap" data-reveal>
+            <h4>Advertising &amp; Growth</h4>
+            <ul>
+              <li>Meta Ads</li><li>Google Ads</li><li>YouTube Ads</li><li>TikTok Ads</li>
+              <li>Influencer</li><li>Retargeting</li><li>Funnels</li>
+            </ul>
+          </div>
+          <div class="cin-cap" data-reveal>
+            <h4>Social &amp; Content</h4>
+            <ul>
+              <li>Instagram</li><li>Facebook</li><li>TikTok</li><li>LinkedIn</li>
+              <li>Reels / Shorts</li><li>Copywriting</li><li>Community</li>
+            </ul>
+          </div>
+          <div class="cin-cap" data-reveal>
+            <h4>Web &amp; E-commerce</h4>
+            <ul>
+              <li>WordPress</li><li>Shopify</li><li>Odoo</li><li>Landing Pages</li>
+              <li>SEO</li><li>Speed / CRO</li><li>Hosting</li>
+            </ul>
+          </div>
+          <div class="cin-cap" data-reveal>
+            <h4>Video &amp; 3D</h4>
+            <ul>
+              <li>3D Product Ads</li><li>Blender</li><li>After Effects</li>
+              <li>Premiere Pro</li><li>Motion Graphics</li><li>Product Renders</li>
+            </ul>
+          </div>
+          <div class="cin-cap" data-reveal>
+            <h4>Email &amp; Automation</h4>
+            <ul>
+              <li>Mailchimp</li><li>Klaviyo</li><li>Flows</li><li>Newsletters</li><li>CRM</li>
+            </ul>
+          </div>
+          <div class="cin-cap" data-reveal>
+            <h4>Design &amp; Brand</h4>
+            <ul>
+              <li>Figma</li><li>Photoshop</li><li>Illustrator</li><li>Canva</li>
+              <li>Logo / Identity</li><li>Brand Kits</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ============ WORK ============ -->
     <section class="work" id="work">
       <div class="section-head">
@@ -267,58 +365,114 @@
         <h2 class="section-head__title" data-split>Results we're <em class="serif-italic">proud of.</em></h2>
       </div>
 
-      <div class="work__grid">
-        <a href="#contact" class="wcard" data-cursor="view" data-reveal>
-          <div class="wcard__media wcard__media--1">
-            <span class="wcard__num">01</span>
-          </div>
-          <div class="wcard__foot">
-            <div>
-              <h3 class="wcard__title">GiveGetFree</h3>
-              <p class="wcard__sub">Crowdfunding growth · Indiegogo</p>
-            </div>
-            <div class="wcard__tags"><span>Ads</span><span>Influencer</span><span>Email</span></div>
-          </div>
-        </a>
+      <p class="cin-lead" style="margin-bottom:2rem">Scroll to unfold the deck — each card is a real brand we helped grow.</p>
 
-        <a href="#contact" class="wcard" data-cursor="view" data-reveal>
-          <div class="wcard__media wcard__media--2">
-            <span class="wcard__num">02</span>
-          </div>
-          <div class="wcard__foot">
-            <div>
-              <h3 class="wcard__title">FAHERBALIS</h3>
-              <p class="wcard__sub">Brand website · Design &amp; build</p>
-            </div>
-            <div class="wcard__tags"><span>Web</span><span>UI/UX</span><span>Dev</span></div>
-          </div>
-        </a>
+      <!-- ScrollStack: cards pin & stack as you scroll (see js/scrollstack.js) -->
+      <div class="scroll-stack-scroller" data-scroll-stack>
+        <div class="scroll-stack-inner">
 
-        <a href="#contact" class="wcard wcard--tall" data-cursor="view" data-reveal>
-          <div class="wcard__media wcard__media--3">
-            <span class="wcard__num">03</span>
+          <!-- CARD 01 -->
+          <div class="scroll-stack-card">
+            <article class="cin-card" data-cursor="hover">
+              <span class="cin-card__flare"></span>
+              <span class="cin-card__c cin-card__c--tl"></span><span class="cin-card__c cin-card__c--tr"></span>
+              <span class="cin-card__c cin-card__c--bl"></span><span class="cin-card__c cin-card__c--br"></span>
+              <span class="cin-card__wm">01</span>
+              <div class="cin-card__grid">
+                <div>
+                  <div class="cin-card__kicker"><b>01 //</b><span>Crowdfunding Growth</span></div>
+                  <h3 class="cin-card__title">GiveGetFree</h3>
+                  <p class="cin-card__desc">We ran the full Indiegogo live campaign end-to-end — high-performing Facebook &amp; YouTube ads, the right influencer partnerships, and a Mailchimp email engine that turned interest into backers.</p>
+                  <ul class="cin-card__tags"><li>Meta Ads</li><li>YouTube Ads</li><li>Influencer</li><li>Email</li><li>Live Campaign</li></ul>
+                </div>
+                <div class="cin-card__side">
+                  <span class="cin-card__mlabel">// Campaign metrics</span>
+                  <div class="cin-metric"><span>PLATFORM</span><span>Indiegogo</span></div>
+                  <div class="cin-metric"><span>CHANNELS</span><span>FB · YouTube</span></div>
+                  <div class="cin-metric"><span>EMAIL</span><span>Mailchimp</span></div>
+                  <a class="cin-card__cta" href="#contact" data-cursor="hover" data-magnetic><span>Start a project</span><span>↗</span></a>
+                </div>
+              </div>
+            </article>
           </div>
-          <div class="wcard__foot">
-            <div>
-              <h3 class="wcard__title">3D Product Ads</h3>
-              <p class="wcard__sub">Cosmetics &amp; consumer goods</p>
-            </div>
-            <div class="wcard__tags"><span>3D</span><span>Motion</span></div>
-          </div>
-        </a>
 
-        <a href="#contact" class="wcard" data-cursor="view" data-reveal>
-          <div class="wcard__media wcard__media--4">
-            <span class="wcard__num">04</span>
+          <!-- CARD 02 -->
+          <div class="scroll-stack-card">
+            <article class="cin-card" data-cursor="hover">
+              <span class="cin-card__flare"></span>
+              <span class="cin-card__c cin-card__c--tl"></span><span class="cin-card__c cin-card__c--tr"></span>
+              <span class="cin-card__c cin-card__c--bl"></span><span class="cin-card__c cin-card__c--br"></span>
+              <span class="cin-card__wm">02</span>
+              <div class="cin-card__grid">
+                <div>
+                  <div class="cin-card__kicker"><b>02 //</b><span>Brand Website · Design &amp; Build</span></div>
+                  <h3 class="cin-card__title">FAHERBALIS</h3>
+                  <p class="cin-card__desc">A beautiful, user-friendly brand website delivered on time. We understood the brand, shaped the identity online, and built a site that looks premium and converts.</p>
+                  <ul class="cin-card__tags"><li>Web Design</li><li>UI/UX</li><li>Development</li><li>Branding</li></ul>
+                </div>
+                <div class="cin-card__side">
+                  <span class="cin-card__mlabel">// Project metrics</span>
+                  <div class="cin-metric"><span>SCOPE</span><span>Design + Build</span></div>
+                  <div class="cin-metric"><span>STACK</span><span>WordPress</span></div>
+                  <div class="cin-metric"><span>DELIVERY</span><span>On time</span></div>
+                  <a class="cin-card__cta" href="#contact" data-cursor="hover" data-magnetic><span>Start a project</span><span>↗</span></a>
+                </div>
+              </div>
+            </article>
           </div>
-          <div class="wcard__foot">
-            <div>
-              <h3 class="wcard__title">Your brand here</h3>
-              <p class="wcard__sub">Let's build your next case study</p>
-            </div>
-            <div class="wcard__tags"><span>Start</span></div>
+
+          <!-- CARD 03 -->
+          <div class="scroll-stack-card">
+            <article class="cin-card" data-cursor="hover">
+              <span class="cin-card__flare"></span>
+              <span class="cin-card__c cin-card__c--tl"></span><span class="cin-card__c cin-card__c--tr"></span>
+              <span class="cin-card__c cin-card__c--bl"></span><span class="cin-card__c cin-card__c--br"></span>
+              <span class="cin-card__wm">03</span>
+              <div class="cin-card__grid">
+                <div>
+                  <div class="cin-card__kicker"><b>03 //</b><span>3D Product Advertising</span></div>
+                  <h3 class="cin-card__title">3D Product Ads</h3>
+                  <p class="cin-card__desc">Photoreal 3D renders and cinematic motion for cosmetics &amp; consumer goods — scroll-stopping ads and reels engineered to be watched and shared.</p>
+                  <ul class="cin-card__tags"><li>3D Animation</li><li>Motion Graphics</li><li>Product Renders</li><li>Ads · Reels</li></ul>
+                </div>
+                <div class="cin-card__side">
+                  <span class="cin-card__mlabel">// Production metrics</span>
+                  <div class="cin-metric"><span>FORMAT</span><span>3D Motion</span></div>
+                  <div class="cin-metric"><span>ENGINE</span><span>Blender · AE</span></div>
+                  <div class="cin-metric"><span>OUTPUT</span><span>Ads + Reels</span></div>
+                  <a class="cin-card__cta" href="#contact" data-cursor="hover" data-magnetic><span>Start a project</span><span>↗</span></a>
+                </div>
+              </div>
+            </article>
           </div>
-        </a>
+
+          <!-- CARD 04 — CTA -->
+          <div class="scroll-stack-card">
+            <article class="cin-card" data-cursor="hover">
+              <span class="cin-card__flare"></span>
+              <span class="cin-card__c cin-card__c--tl"></span><span class="cin-card__c cin-card__c--tr"></span>
+              <span class="cin-card__c cin-card__c--bl"></span><span class="cin-card__c cin-card__c--br"></span>
+              <span class="cin-card__wm">04</span>
+              <div class="cin-card__grid">
+                <div>
+                  <div class="cin-card__kicker"><b>04 //</b><span>Open Slot</span></div>
+                  <h3 class="cin-card__title">Your Brand Here</h3>
+                  <p class="cin-card__desc">The next case study is yours. Tell us where you want to go and we'll build the campaign, the content and the 3D that gets you there.</p>
+                  <ul class="cin-card__tags"><li>Strategy</li><li>Ads</li><li>Web</li><li>3D</li></ul>
+                </div>
+                <div class="cin-card__side">
+                  <span class="cin-card__mlabel">// Availability</span>
+                  <div class="cin-metric"><span>SLOT</span><span>Open</span></div>
+                  <div class="cin-metric"><span>START</span><span>This week</span></div>
+                  <div class="cin-metric"><span>REPLY</span><span>&lt; 1 day</span></div>
+                  <a class="cin-card__cta" href="#contact" data-cursor="hover" data-magnetic><span>Let's talk</span><span>↗</span></a>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <div class="scroll-stack-end"></div>
+        </div>
       </div>
 
       <div class="work__cases">
@@ -330,6 +484,38 @@
           <p>“60GDM did an amazing job creating our website! They understood our brand and delivered a beautiful, user-friendly site on time. Highly professional and great to work with!”</p>
           <footer><strong>Fatima Ayaz</strong> — Founder, FAHERBALIS</footer>
         </blockquote>
+      </div>
+    </section>
+
+    <!-- ============ JOURNEY (experience timeline) ============ -->
+    <section class="cin" id="journey">
+      <span class="cin__glow cin__glow--b"></span>
+      <div class="cin__inner">
+        <div class="cin-eyebrow">(The road so far)</div>
+        <h2 class="cin-title"><span class="l1">Built on</span><span class="l2">real results.</span></h2>
+
+        <div class="cin-time">
+          <div class="cin-tl" data-reveal>
+            <div class="cin-tl__year">THE START</div>
+            <h3 class="cin-tl__title">60GDM is born</h3>
+            <p class="cin-tl__desc">Sixty — The Group of Digital Marketing — founded to give ambitious brands one creative partner for every channel that matters.</p>
+          </div>
+          <div class="cin-tl" data-reveal>
+            <div class="cin-tl__year">GROWTH</div>
+            <h3 class="cin-tl__title">Campaigns that convert</h3>
+            <p class="cin-tl__desc">From crowdfunding launches to full-funnel ad systems — we turned attention into revenue for brands like GiveGetFree and FAHERBALIS.</p>
+          </div>
+          <div class="cin-tl" data-reveal>
+            <div class="cin-tl__year">EXPANSION</div>
+            <h3 class="cin-tl__title">Into 3D &amp; motion</h3>
+            <p class="cin-tl__desc">We added photoreal 3D product ads and cinematic motion — the scroll-stopping edge most agencies can't offer.</p>
+          </div>
+          <div class="cin-tl" data-reveal>
+            <div class="cin-tl__year">TODAY</div>
+            <h3 class="cin-tl__title">Worldwide &amp; growing</h3>
+            <p class="cin-tl__desc">150+ projects, 40+ happy clients, 12+ countries served — and taking on new brands ready to skyrocket their online presence.</p>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -446,6 +632,7 @@
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
   <script src="js/main.js" defer></script>
+  <script src="js/scrollstack.js" defer></script>
 
   <script type="importmap">
     {
