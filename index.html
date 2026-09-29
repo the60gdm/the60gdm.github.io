@@ -26,6 +26,7 @@
 
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/cinematic.css" />
+  <link rel="stylesheet" href="css/enhance.css" />
 </head>
 <body>
 
@@ -166,7 +167,7 @@
           <div class="cin-portrait__body reveal-fade">
             <h2 class="cin-portrait__head">
               <span class="a">I build</span>
-              <span class="b">digital</span>
+              <span class="b glow-word">digital</span>
               <span class="c">brands.</span>
             </h2>
             <p class="cin-portrait__roles">Founder <i>•</i> Creative Director <i>•</i> 60GDM</p>
@@ -496,6 +497,27 @@
       </div>
     </section>
 
+    <!-- ============ SHOWREEL (3D video, styled as coded-in) ============ -->
+    <section class="cin" id="showreel">
+      <span class="cin__glow cin__glow--a"></span>
+      <span class="cin__glow cin__glow--b"></span>
+      <div class="cin__inner">
+        <div class="cin-eyebrow">(Our 3D craft in motion)</div>
+        <h2 class="cin-title"><span class="l1">3D that</span><span class="l2">stops the scroll.</span></h2>
+        <p class="cin-lead">Real 60GDM 3D work — photoreal product motion built to make people stop, watch and buy.</p>
+        <div class="reel__frame" data-reveal>
+          <span class="reel__flare"></span>
+          <span class="reel__badge">Reel · 60GDM 3D</span>
+          <span class="cin-card__c cin-card__c--tl"></span><span class="cin-card__c cin-card__c--tr"></span>
+          <span class="cin-card__c cin-card__c--bl"></span><span class="cin-card__c cin-card__c--br"></span>
+          <video autoplay muted loop playsinline preload="metadata">
+            <source src="assets/showreel.mp4" type="video/mp4" />
+          </video>
+          <button class="reel__mute" aria-label="Toggle sound" data-cursor="hover">🔇</button>
+        </div>
+      </div>
+    </section>
+
     <!-- ============ JOURNEY (experience timeline) ============ -->
     <section class="cin" id="journey">
       <span class="cin__glow cin__glow--b"></span>
@@ -591,6 +613,7 @@
         <div class="cta__direct">
           <a href="mailto:the60gdm@gmail.com" data-cursor="hover">the60gdm@gmail.com</a>
           <a href="https://wa.me/923333611566" target="_blank" rel="noopener" data-cursor="hover">+92 333 3611566</a>
+          <a href="https://www.fiverr.com/sixty_gdm/boost-your-business-with-60gdms-expert-digital-marketing" target="_blank" rel="noopener" data-cursor="hover">Hire on Fiverr ↗</a>
         </div>
       </div>
     </section>
@@ -618,6 +641,7 @@
       </div>
       <div class="footer__col">
         <h4>Social</h4>
+        <a href="https://www.fiverr.com/sixty_gdm/boost-your-business-with-60gdms-expert-digital-marketing" target="_blank" rel="noopener" data-cursor="hover">Fiverr ↗</a>
         <a href="https://www.instagram.com/" target="_blank" rel="noopener" data-cursor="hover">Instagram</a>
         <a href="https://www.facebook.com/" target="_blank" rel="noopener" data-cursor="hover">Facebook</a>
         <a href="https://www.linkedin.com/" target="_blank" rel="noopener" data-cursor="hover">LinkedIn</a>
@@ -636,12 +660,20 @@
     </div>
   </footer>
 
+  <!-- ============ WHATSAPP FLOAT ============ -->
+  <a class="wa-float" href="https://api.whatsapp.com/send/?phone=923333611566&text&type=phone_number&app_absent=0"
+     target="_blank" rel="noopener" aria-label="Chat on WhatsApp" data-cursor="hover">
+    <span class="wa-float__tip">Chat with 60GDM on WhatsApp</span>
+    <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 .5C7.4.5.5 7.4.5 16c0 2.8.7 5.4 2 7.7L.5 31.5l8-2.1c2.2 1.2 4.8 1.9 7.5 1.9 8.6 0 15.5-6.9 15.5-15.5S24.6.5 16 .5zm0 28c-2.4 0-4.7-.6-6.7-1.8l-.5-.3-4.8 1.3 1.3-4.7-.3-.5C3.9 20.3 3.2 18.2 3.2 16 3.2 8.9 8.9 3.2 16 3.2S28.8 8.9 28.8 16 23.1 28.5 16 28.5zm7.4-9.6c-.4-.2-2.4-1.2-2.8-1.3-.4-.1-.6-.2-.9.2-.3.4-1 1.3-1.2 1.5-.2.2-.4.3-.8.1-.4-.2-1.7-.6-3.2-2-1.2-1.1-2-2.4-2.2-2.8-.2-.4 0-.6.2-.8.2-.2.4-.4.5-.7.2-.2.2-.4.4-.6.1-.3 0-.5 0-.7-.1-.2-.9-2.1-1.2-2.9-.3-.8-.6-.7-.9-.7h-.7c-.2 0-.6.1-1 .5-.3.4-1.3 1.3-1.3 3.1 0 1.8 1.3 3.6 1.5 3.8.2.2 2.6 4 6.3 5.6.9.4 1.6.6 2.1.8.9.3 1.7.2 2.3.1.7-.1 2.4-1 2.7-1.9.3-.9.3-1.7.2-1.9-.1-.2-.3-.3-.7-.5z"/></svg>
+  </a>
+
   <!-- ============ SCRIPTS ============ -->
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
   <script src="js/main.js" defer></script>
   <script src="js/scrollstack.js" defer></script>
+  <script src="js/enhance.js" defer></script>
 
   <script type="importmap">
     {

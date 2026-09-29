@@ -1,0 +1,213 @@
+/* ============================================================
+   60GDM — Enhancement layer (loads last, wins overrides)
+   Depth backgrounds, gold accents, 3D-look cards, icon cursor,
+   photo parallax, size fixes, glow word, WhatsApp, showreel.
+   ============================================================ */
+
+:root {
+  --gold:  #E8C87A;
+  --gold-2:#D4AF37;
+  --champ: #F7E7C4;
+}
+
+/* ---------- 1. BACKGROUND DEPTH (no more flat black) ---------- */
+body { background: #050506; }
+/* richer page vignette: cool top glow + warm low glow */
+body::after {
+  content: ""; position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background:
+    radial-gradient(60% 40% at 80% 8%, rgba(212,175,55,.06), transparent 60%),
+    radial-gradient(70% 50% at 12% 92%, rgba(120,130,170,.08), transparent 60%);
+}
+/* per-section shades so scrolling reveals subtle tonal shifts */
+.intro     { background: linear-gradient(180deg, #060607 0%, #0a0a0d 100%) !important; }
+.stats     { background: linear-gradient(180deg, #0a0a0d, #08080a) !important; }
+.services  { background: linear-gradient(180deg, #08080a 0%, #0c0b0e 55%, #08080a 100%) !important; }
+.work      { background: linear-gradient(180deg, #070708 0%, #0b0a0c 100%) !important; }
+.process   { background: linear-gradient(180deg, #0b0a0e, #08080a) !important; }
+.cta       { background:
+  radial-gradient(80% 70% at 50% 0%, rgba(212,175,55,.05), transparent 55%),
+  linear-gradient(180deg, #08080a, #060506) !important; }
+.cin       { background: linear-gradient(180deg, #060506 0%, #0a0907 60%, #060506 100%); }
+.footer    { background: linear-gradient(180deg, #0a0a0c, #060506) !important; }
+
+/* ---------- 2. COLOUR ACCENTS on white text (subtle) ---------- */
+/* accent italic words go warm gold across the site */
+.hero__tag .serif-italic,
+.manifesto__text em,
+.intro__statement em,
+.section-head__title .serif-italic,
+.cta__title .serif-italic,
+.svc__desc em { color: var(--champ) !important; }
+
+/* hero tagline: warm metallic gradient (not a split element → safe) */
+.hero__tag {
+  background: linear-gradient(180deg, #ffffff 0%, #e9ddc4 60%, #b79445 100%);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: transparent;
+}
+.hero__tag .serif-italic {
+  -webkit-text-fill-color: var(--champ);
+}
+.hero__eyebrow { color: #b9a988 !important; }
+
+/* stat numbers → shimmering chrome-gold, with a hover lift */
+.stat { transition: background .4s ease; }
+.stat:hover { background: rgba(212,175,55,.03) !important; }
+.stat__num {
+  background: linear-gradient(180deg, #fff 0%, #f0e3c4 45%, #c99e5d 100%);
+  background-size: 100% 220%;
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: transparent;
+  animation: statShine 5s ease-in-out infinite;
+}
+@keyframes statShine { 0%,100% { background-position: 0 0%; } 50% { background-position: 0 100%; } }
+.stat__label { color: #9a948c !important; letter-spacing: .06em; }
+
+/* ---------- 3. SIZE FIXES ---------- */
+/* about statement was too large relative to headings */
+.intro__statement { font-size: clamp(1.45rem, 3.3vw, 2.9rem) !important; max-width: 24ch !important; line-height: 1.08 !important; }
+/* footer "Let's work together" marquee was too big */
+.footer__track span { font-size: clamp(1.5rem, 4.2vw, 3.2rem) !important; }
+.footer__marquee { padding: clamp(1.2rem, 3.5vw, 2.2rem) 0 !important; }
+
+/* ---------- 4. GLOW WORD (animated gold background behind a word) ---------- */
+.glow-word { position: relative; z-index: 1; }
+.glow-word::before {
+  content: ""; position: absolute; z-index: -1; inset: -8% -6%;
+  background: radial-gradient(60% 120% at 50% 50%, rgba(212,175,55,.55), rgba(212,175,55,.12) 55%, transparent 72%);
+  filter: blur(14px); border-radius: 40%;
+  animation: glowPulse 3.6s ease-in-out infinite;
+}
+@keyframes glowPulse {
+  0%,100% { transform: scale(1) translateX(0); opacity: .75; }
+  50%     { transform: scale(1.12) translateX(2%); opacity: 1; }
+}
+
+/* ---------- 5. CAPABILITY CARDS → 3D look ---------- */
+.cin-caps { perspective: 1200px; }
+.cin-cap {
+  position: relative; overflow: hidden;
+  background: linear-gradient(160deg, #14110d 0%, #0b0a08 60%, #100d09 100%) !important;
+  border-color: rgba(140,109,79,.35);
+  transform-style: preserve-3d;
+  transition: transform .5s var(--ease, cubic-bezier(.16,1,.3,1)), border-color .4s ease, box-shadow .4s ease;
+}
+.cin-cap::before { /* top gold flare */
+  content: ""; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(212,175,55,.8), transparent);
+  opacity: .6; transition: opacity .4s;
+}
+.cin-cap::after { /* moving sheen */
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(115deg, transparent 30%, rgba(247,231,196,.06) 48%, transparent 62%);
+  transform: translateX(-120%); transition: transform .8s ease;
+}
+.cin-cap:hover { border-color: rgba(212,175,55,.65) !important;
+  box-shadow: 0 24px 60px rgba(0,0,0,.6), 0 0 30px rgba(212,175,55,.08); }
+.cin-cap:hover::before { opacity: 1; }
+.cin-cap:hover::after { transform: translateX(120%); }
+.cin-cap h4 { font-size: 1.7rem !important; }
+.cin-cap li { font-size: 11.5px !important; color: #b6a894 !important;
+  transition: color .3s, border-color .3s, background .3s; }
+.cin-cap li:hover { color: var(--champ) !important; border-color: rgba(212,175,55,.5) !important;
+  background: rgba(212,175,55,.06) !important; }
+
+/* ---------- 6. JOURNEY font polish ---------- */
+.cin-tl__title { font-family: "Bebas Neue","Syne",sans-serif !important; font-size: 1.85rem !important;
+  letter-spacing: .02em; color: #fff !important; }
+.cin-tl__year { color: var(--gold) !important; font-weight: 600; }
+.cin-tl__desc { font-size: .95rem !important; color: #b3a89c !important; line-height: 1.75 !important; }
+
+/* ---------- 7. ICON CURSOR ---------- */
+@media (hover: hover) and (pointer: fine) {
+  .cursor { display: none !important; }              /* hide old ring */
+  #cursor-ic {
+    position: fixed; top: 0; left: 0; z-index: 9999; width: 46px; height: 46px;
+    margin: -23px 0 0 -23px; pointer-events: none; border-radius: 50%;
+    display: grid; place-items: center;
+    border: 1px solid rgba(212,175,55,.55);
+    background: rgba(212,175,55,.06); backdrop-filter: blur(2px);
+    transition: width .3s var(--ease, ease), height .3s var(--ease, ease),
+                background .3s ease, border-color .3s ease;
+  }
+  #cursor-ic svg { width: 20px; height: 20px; stroke: var(--gold); fill: none;
+    stroke-width: 1.6; opacity: 0; transition: opacity .35s ease; }
+  #cursor-ic.show svg { opacity: 1; }
+  #cursor-ic.big { width: 78px; height: 78px; background: rgba(212,175,55,.14);
+    border-color: var(--gold); }
+  #cursor-ic.big svg { width: 30px; height: 30px; }
+}
+
+/* ---------- 8. PHOTO 3D PARALLAX / integrated look ---------- */
+.cin-portrait { perspective: 1400px; }
+.cin-ph { transform-style: preserve-3d; transition: transform .25s ease; will-change: transform;
+  animation: phFloat 7s ease-in-out infinite; }
+@keyframes phFloat { 0%,100% { translate: 0 0; } 50% { translate: 0 -10px; } }
+.cin-ph img { will-change: transform;
+  /* fade the outer edges so the plain background dissolves into the theme */
+  -webkit-mask-image: radial-gradient(120% 100% at 50% 38%, #000 55%, transparent 92%);
+          mask-image: radial-gradient(120% 100% at 50% 38%, #000 55%, transparent 92%); }
+/* stronger blends to kill the light wall */
+.cin-ph__blend--v { background:
+  linear-gradient(180deg, rgba(6,5,4,.72) 0%, rgba(6,5,4,.05) 26%, rgba(6,5,4,.05) 48%, rgba(6,5,4,.97) 100%) !important; }
+.cin-ph__blend--h { background:
+  linear-gradient(90deg, rgba(6,5,4,.75) 0%, rgba(6,5,4,0) 34%, rgba(6,5,4,0) 66%, rgba(6,5,4,.55) 100%) !important; }
+/* pedestal glow under the figure */
+.cin-ph::after {
+  content: ""; position: absolute; left: 50%; bottom: 6%; z-index: 1;
+  width: 62%; height: 12%; transform: translateX(-50%);
+  background: radial-gradient(50% 100% at 50% 50%, rgba(212,175,55,.35), transparent 70%);
+  filter: blur(14px); pointer-events: none;
+}
+
+/* ---------- 9. WHATSAPP FLOAT BUTTON ---------- */
+.wa-float {
+  position: fixed; right: clamp(14px, 3vw, 28px); bottom: clamp(14px, 3vw, 28px);
+  z-index: 950; width: 58px; height: 58px; border-radius: 50%;
+  display: grid; place-items: center; background: #25D366;
+  box-shadow: 0 10px 30px rgba(37,211,102,.4);
+  transition: transform .3s var(--ease, ease), box-shadow .3s;
+}
+.wa-float svg { width: 30px; height: 30px; fill: #fff; }
+.wa-float::before {
+  content: ""; position: absolute; inset: 0; border-radius: 50%;
+  border: 2px solid rgba(37,211,102,.6); animation: waPulse 2.2s ease-out infinite;
+}
+@keyframes waPulse { 0% { transform: scale(1); opacity: .7; } 100% { transform: scale(1.8); opacity: 0; } }
+.wa-float:hover { transform: scale(1.1); box-shadow: 0 14px 40px rgba(37,211,102,.55); }
+.wa-float__tip {
+  position: absolute; right: 72px; top: 50%; transform: translateY(-50%);
+  background: #0e0c0a; color: #F7E7C4; border: 1px solid rgba(212,175,55,.4);
+  padding: .5rem .8rem; border-radius: 8px; white-space: nowrap;
+  font-family: "Montserrat", sans-serif; font-size: 11px; letter-spacing: .06em;
+  opacity: 0; pointer-events: none; transition: opacity .3s;
+}
+.wa-float:hover .wa-float__tip { opacity: 1; }
+@media (max-width: 520px) { .wa-float { width: 52px; height: 52px; } .wa-float__tip { display: none; } }
+
+/* ---------- 10. SHOWREEL (3D video) ---------- */
+.reel__frame {
+  position: relative; max-width: 1100px; margin: 2.5rem auto 0; border-radius: 18px;
+  overflow: hidden; border: 1px solid rgba(140,109,79,.5);
+  box-shadow: 0 40px 100px rgba(0,0,0,.9); background: #000; aspect-ratio: 16 / 9;
+}
+.reel__frame video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.reel__frame .cin-card__c { z-index: 4; width: 24px; height: 24px; }
+.reel__flare { position: absolute; top: 0; left: 0; right: 0; height: 1px; z-index: 4;
+  background: linear-gradient(90deg, transparent, rgba(212,175,55,.85), transparent); }
+.reel__badge { position: absolute; top: 16px; left: 18px; z-index: 4;
+  font-family: "Montserrat", sans-serif; font-size: 10px; letter-spacing: .28em; text-transform: uppercase;
+  color: var(--champ); background: rgba(0,0,0,.4); padding: .35rem .7rem; border: 1px solid rgba(212,175,55,.4); border-radius: 4px; }
+.reel__mute {
+  position: absolute; bottom: 16px; right: 16px; z-index: 5; cursor: pointer;
+  width: 42px; height: 42px; border-radius: 50%; display: grid; place-items: center;
+  background: rgba(0,0,0,.5); border: 1px solid rgba(212,175,55,.4); color: var(--champ);
+  font-size: 15px; transition: background .3s, transform .3s;
+}
+.reel__mute:hover { background: rgba(212,175,55,.2); transform: scale(1.08); }
+
+/* ---------- 11. reduce-motion safety ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .cin-ph, .glow-word::before, .stat__num, .wa-float::before { animation: none !important; }
+}

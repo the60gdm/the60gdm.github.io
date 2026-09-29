@@ -42,15 +42,16 @@ function init() {
 
   // Chrome / iridescent material (validated look)
   const material = new THREE.MeshPhysicalMaterial({
-    color: 0xc7cbd6,
+    color: 0xf4f6fb,          // brighter → reads as a clean white 60GDM logo
     metalness: 1.0,
-    roughness: 0.2,
+    roughness: 0.16,
     clearcoat: 1.0,
-    clearcoatRoughness: 0.18,
-    iridescence: 0.9,
-    iridescenceIOR: 1.4,
-    iridescenceThicknessRange: [140, 540],
-    envMapIntensity: 0.85,
+    clearcoatRoughness: 0.14,
+    iridescence: 0.5,         // less rainbow so the white brand colour dominates
+    iridescenceIOR: 1.35,
+    iridescenceThicknessRange: [160, 480],
+    envMapIntensity: 1.05,
+    emissive: 0x0a0c12,
   });
 
   // Lights (env does most of the work)
@@ -80,7 +81,7 @@ function init() {
     const mesh = new THREE.Mesh(geo, material);
     logoGroup.add(mesh);
     // scale to fit the viewport width
-    const target = isMobile ? 3.0 : 4.2;
+    const target = isMobile ? 3.4 : 5.0;
     const s = target / w;
     logoGroup.scale.setScalar(s);
     logoGroup.userData.baseS = s;
