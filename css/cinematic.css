@@ -137,45 +137,96 @@
 .cin-card__cta:hover { border-color: var(--cin-gold); background: var(--cin-gold); color: #000; }
 
 /* ============================================================
-   FOUNDER / ABOUT with photo + signature
+   FOUNDER — cinematic portrait hero (reference style)
+   Large portrait on one side, blended into black, with a big
+   gradient headline, floating quote + signature on the other.
    ============================================================ */
-.cin-founder__grid { display: grid; gap: clamp(1.6rem, 4vw, 3.5rem); align-items: center;
+.cin-portrait { display: grid; gap: clamp(1.5rem, 4vw, 3rem); align-items: stretch;
   grid-template-columns: 1fr; }
-@media (min-width: 860px) { .cin-founder__grid { grid-template-columns: .82fr 1fr; } }
+@media (min-width: 900px) { .cin-portrait { grid-template-columns: 1.05fr .95fr; align-items: center; } }
 
-.cin-photo {
-  position: relative; aspect-ratio: 4 / 5; border-radius: 16px; overflow: hidden;
-  border: 1px solid rgba(140,109,79,.5); background:
-    radial-gradient(120% 120% at 50% 0%, #17130f, #070605 70%);
-  box-shadow: 0 30px 80px rgba(0,0,0,.9);
+/* ---- content side ---- */
+.cin-portrait__body { position: relative; z-index: 3; order: 2; }
+@media (min-width: 900px) { .cin-portrait__body { order: 1; } }
+.cin-portrait__head {
+  font-family: "Bebas Neue", "Syne", sans-serif; text-transform: uppercase;
+  line-height: .82; letter-spacing: .01em; margin: .4rem 0 1.2rem;
+  font-size: clamp(3.2rem, 9vw, 7rem);
 }
-.cin-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.cin-photo__flare { position: absolute; inset: 0; pointer-events: none;
-  background: linear-gradient(180deg, transparent 55%, rgba(0,0,0,.55)); }
-.cin-photo__c { position: absolute; width: 22px; height: 22px; border-color: rgba(212,175,55,.7); z-index: 3; }
-.cin-photo__c--tl { top: 14px; left: 14px; border-top: 2px solid; border-left: 2px solid; }
-.cin-photo__c--br { bottom: 14px; right: 14px; border-bottom: 2px solid; border-right: 2px solid; }
-/* placeholder shown until a real photo is dropped in (img[onerror] adds .is-missing) */
-.cin-photo__ph {
-  position: absolute; inset: 0; display: none; flex-direction: column; gap: .5rem;
-  align-items: center; justify-content: center; text-align: center; padding: 1.5rem;
+.cin-portrait__head span { display: block; background-clip: text; -webkit-background-clip: text; color: transparent; }
+.cin-portrait__head .a { background-image: linear-gradient(180deg, #fff, #D5CBC0 55%, #605448); }
+.cin-portrait__head .b { background-image: linear-gradient(180deg, #F7E7C4, #C99E5D 55%, #543B1A);
+  filter: drop-shadow(0 8px 25px rgba(201,158,93,.30)); }
+.cin-portrait__head .c { background-image: linear-gradient(180deg, #DFBE8A, #9B7640 55%, #342410);
+  filter: drop-shadow(0 10px 30px rgba(155,118,64,.35)); }
+.cin-portrait__roles { font-family: "Montserrat", sans-serif; font-size: clamp(10px,1.3vw,12px);
+  font-weight: 400; letter-spacing: .28em; text-transform: uppercase; color: #C4B29E; margin: 0 0 1.3rem; }
+.cin-portrait__roles i { color: var(--cin-bronze); font-style: normal; margin: 0 .4rem; }
+.cin-portrait__desc { font-family: "Montserrat", sans-serif; font-weight: 300; color: #A8988B;
+  line-height: 1.85; font-size: clamp(.85rem,1.4vw,.98rem); max-width: 32rem; margin: 0 0 1.8rem; }
+.cin-portrait__desc em { color: #F7E7C4; font-style: italic; }
+.cin-portrait__cta { display: flex; flex-wrap: wrap; gap: .9rem; margin-bottom: 1.9rem; }
+.cin-btn {
+  display: inline-flex; align-items: center; gap: .6rem; padding: .95rem 1.5rem;
+  font-family: "Montserrat", sans-serif; font-size: 11px; font-weight: 500; letter-spacing: .24em;
+  text-transform: uppercase; text-decoration: none; border-radius: 4px; transition: all .3s ease;
 }
-.cin-photo img.is-missing { display: none; }
-.cin-photo img.is-missing ~ .cin-photo__ph { display: flex; }
-.cin-photo__ph b { font-family: "Bebas Neue", sans-serif; font-size: 3rem; color: rgba(212,175,55,.5); letter-spacing: .05em; }
-.cin-photo__ph small { font-family: "Montserrat", sans-serif; font-size: 10.5px; letter-spacing: .22em;
-  text-transform: uppercase; color: var(--cin-muted); line-height: 1.7; }
-
-.cin-founder__body p { font-family: "Montserrat", sans-serif; font-weight: 300; color: #C9BCAF;
-  line-height: 1.9; font-size: clamp(.9rem, 1.5vw, 1.05rem); margin: 0 0 1.2rem; }
-.cin-founder__body em { font-style: italic; color: #F7E7C4; }
-.cin-sign { margin-top: 1.6rem; }
+.cin-btn--solid { background: var(--cin-gold); color: #000; border: 1px solid var(--cin-gold);
+  box-shadow: 0 0 25px rgba(212,175,55,.18); }
+.cin-btn--solid:hover { background: #F7E7C4; border-color: #F7E7C4; }
+.cin-btn--ghost { border: 1px solid var(--cin-bronze); color: #EAD8C7; background: rgba(18,15,12,.6); }
+.cin-btn--ghost:hover { border-color: var(--cin-gold); color: #FFF5EB; }
+/* signature */
+.cin-sign { margin-top: .4rem; }
 .cin-sign__rule { width: 7rem; height: 1px; margin-bottom: .5rem;
   background: linear-gradient(90deg, var(--cin-gold), rgba(232,215,197,.6), transparent);
   box-shadow: 0 0 8px rgba(212,175,55,.4); }
-.cin-sign__name { font-family: "Allura", cursive; font-size: 2.6rem; color: #D8AB64; line-height: 1; }
+.cin-sign__name { font-family: "Allura", cursive; font-size: 2.8rem; color: #D8AB64; line-height: 1; }
 .cin-sign__role { font-family: "Montserrat", sans-serif; font-size: 10px; letter-spacing: .28em;
   text-transform: uppercase; color: var(--cin-muted); margin-top: .3rem; }
+
+/* ---- portrait side ---- */
+.cin-ph {
+  position: relative; order: 1; align-self: stretch; overflow: hidden; border-radius: 18px;
+  min-height: clamp(430px, 68vh, 760px); border: 1px solid rgba(140,109,79,.45);
+  background: radial-gradient(120% 120% at 70% 10%, #18130e, #060504 72%);
+  box-shadow: 0 40px 100px rgba(0,0,0,.92);
+}
+@media (min-width: 900px) { .cin-ph { order: 2; } }
+.cin-ph img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+  object-position: 50% 12%; display: block; filter: contrast(1.04) saturate(1.02); }
+.cin-ph img.is-missing { display: none; }
+/* cinematic blends so the light-bg photo melts into the black theme */
+.cin-ph__blend { position: absolute; inset: 0; pointer-events: none; z-index: 2; }
+.cin-ph__blend--v { background:
+  linear-gradient(180deg, rgba(6,5,4,.55) 0%, rgba(6,5,4,0) 22%, rgba(6,5,4,0) 55%, rgba(6,5,4,.92) 100%); }
+.cin-ph__blend--h { background:
+  linear-gradient(90deg, rgba(6,5,4,.6) 0%, rgba(6,5,4,0) 30%); }
+.cin-ph__blend--gold { mix-blend-mode: soft-light;
+  background: radial-gradient(90% 70% at 60% 20%, rgba(212,175,55,.18), transparent 60%); }
+/* gold L-brackets */
+.cin-ph__c { position: absolute; width: 26px; height: 26px; border-color: rgba(212,175,55,.75); z-index: 4; }
+.cin-ph__c--tl { top: 16px; left: 16px; border-top: 2px solid; border-left: 2px solid; }
+.cin-ph__c--tr { top: 16px; right: 16px; border-top: 2px solid; border-right: 2px solid; }
+.cin-ph__c--bl { bottom: 16px; left: 16px; border-bottom: 2px solid; border-left: 2px solid; }
+.cin-ph__c--br { bottom: 16px; right: 16px; border-bottom: 2px solid; border-right: 2px solid; }
+/* faint watermark emblem on the portrait */
+.cin-ph__wm { position: absolute; top: 18px; right: 22px; z-index: 4;
+  font-family: "Bebas Neue", sans-serif; font-size: 1.4rem; letter-spacing: .12em;
+  color: rgba(247,231,196,.85); text-shadow: 0 2px 10px rgba(0,0,0,.8); }
+/* floating caption over the bottom of the portrait */
+.cin-ph__cap { position: absolute; left: 22px; bottom: 20px; z-index: 4; }
+.cin-ph__cap b { display: block; font-family: "Bebas Neue", sans-serif; font-size: 1.9rem;
+  color: #fff; letter-spacing: .03em; line-height: 1; }
+.cin-ph__cap span { font-family: "Montserrat", sans-serif; font-size: 9.5px; letter-spacing: .26em;
+  text-transform: uppercase; color: var(--cin-champ); }
+/* placeholder until a photo exists */
+.cin-ph__ph { position: absolute; inset: 0; display: none; flex-direction: column; gap: .5rem;
+  align-items: center; justify-content: center; text-align: center; padding: 1.5rem; z-index: 3; }
+.cin-ph img.is-missing ~ .cin-ph__ph { display: flex; }
+.cin-ph__ph b { font-family: "Bebas Neue", sans-serif; font-size: 3rem; color: rgba(212,175,55,.5); }
+.cin-ph__ph small { font-family: "Montserrat", sans-serif; font-size: 10.5px; letter-spacing: .22em;
+  text-transform: uppercase; color: var(--cin-muted); line-height: 1.7; }
 
 /* ============================================================
    CAPABILITIES grid (skills / platforms)
