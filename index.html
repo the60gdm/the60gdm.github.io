@@ -123,41 +123,37 @@
       </a>
     </section>
 
-    <!-- ============ HERO INTRO — video + agency text ============ -->
+    <!-- ============ HERO INTRO — full-bleed background video + overlay text ============ -->
     <section class="hero-intro" id="hero-intro">
-      <div class="hero-intro__inner">
 
-        <div class="hero-intro__video reveal-fade">
-          <video autoplay muted loop playsinline>
-            <source src="assets/hero-video.mp4" type="video/mp4" />
-          </video>
-          <div class="hero-intro__video-border"></div>
+      <video class="hero-intro__bg" autoplay muted loop playsinline preload="auto">
+        <source src="assets/hero-video.mp4" type="video/mp4" />
+      </video>
+      <div class="hero-intro__overlay"></div>
+
+      <div class="hero-intro__content reveal-fade">
+        <span class="hero-intro__label"><span class="tick"></span> Who We Are</span>
+        <h2 class="hero-intro__title">
+          We Don't Just <em class="serif-italic glow-word">Market.</em><br />
+          We <em class="serif-italic glow-word">Transform.</em>
+        </h2>
+        <p class="hero-intro__desc">
+          60GDM is a full-service digital marketing agency that turns ambitious brands into market leaders.
+          We blend data-driven strategy with bold creative — from social media and Google Ads to 3D animation and custom web development.
+        </p>
+        <div class="hero-intro__services">
+          <span class="hero-intro__chip">Social Media Marketing</span>
+          <span class="hero-intro__chip">Google & Meta Ads</span>
+          <span class="hero-intro__chip">SEO & Content</span>
+          <span class="hero-intro__chip">3D & Motion Design</span>
+          <span class="hero-intro__chip">Web Development</span>
+          <span class="hero-intro__chip">Brand Strategy</span>
         </div>
-
-        <div class="hero-intro__content reveal-fade">
-          <span class="hero-intro__label"><span class="tick"></span> Who We Are</span>
-          <h2 class="hero-intro__title">
-            We Don't Just <em class="serif-italic glow-word">Market.</em><br />
-            We <em class="serif-italic glow-word">Transform.</em>
-          </h2>
-          <p class="hero-intro__desc">
-            60GDM is a full-service digital marketing agency that turns ambitious brands into market leaders.
-            We blend data-driven strategy with bold creative — from social media and Google Ads to 3D animation and custom web development.
-          </p>
-          <div class="hero-intro__services">
-            <span class="hero-intro__chip">Social Media Marketing</span>
-            <span class="hero-intro__chip">Google & Meta Ads</span>
-            <span class="hero-intro__chip">SEO & Content</span>
-            <span class="hero-intro__chip">3D & Motion Design</span>
-            <span class="hero-intro__chip">Web Development</span>
-            <span class="hero-intro__chip">Brand Strategy</span>
-          </div>
-          <a href="#contact" class="btn btn--solid hero-intro__cta" data-cursor="hover" data-magnetic>
-            <span>Get a Free Consultation</span>
-          </a>
-        </div>
-
+        <a href="#contact" class="btn btn--solid hero-intro__cta" data-cursor="hover" data-magnetic>
+          <span>Get a Free Consultation</span>
+        </a>
       </div>
+
     </section>
 
     <!-- ============ MANIFESTO (transparent — logo re-poses through it) ============ -->
