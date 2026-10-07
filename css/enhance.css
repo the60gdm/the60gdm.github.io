@@ -209,17 +209,16 @@ body::after {
 
 /* ---------- 12. FLOATING CHARACTER (cutout on black) ---------- */
 .cin-char {
-  position: relative; order: 1; align-self: center; min-height: clamp(500px, 82vh, 880px);
+  position: relative; order: 1; align-self: center; min-height: clamp(560px, 95vh, 960px);
   display: flex; align-items: flex-end; justify-content: center;
   transform-style: preserve-3d; will-change: transform;
 }
 @media (min-width: 900px) { .cin-char { order: 2; } }
 .cin-char__img {
-  position: relative; z-index: 2; height: clamp(500px, 82vh, 880px); width: auto; max-width: 100%;
+  position: relative; z-index: 2; height: clamp(560px, 95vh, 960px); width: auto; max-width: 100%;
   object-fit: contain; display: block; filter: contrast(1.05) drop-shadow(0 30px 40px rgba(0,0,0,.8));
-  /* wider, softer mask: hides all black edges/borders seamlessly */
-  -webkit-mask-image: radial-gradient(72% 88% at 50% 48%, #000 76%, transparent 97%);
-          mask-image: radial-gradient(72% 88% at 50% 48%, #000 76%, transparent 97%);
+  -webkit-mask-image: radial-gradient(62% 78% at 50% 46%, #000 68%, transparent 88%);
+          mask-image: radial-gradient(62% 78% at 50% 46%, #000 68%, transparent 88%);
 }
 .cin-char__glow {
   position: absolute; z-index: 1; left: 50%; top: 38%; width: 70%; height: 55%;
@@ -232,9 +231,16 @@ body::after {
   background: radial-gradient(50% 100% at 50% 50%, rgba(212,175,55,.3), transparent 70%);
   filter: blur(20px); pointer-events: none;
 }
-.cin-char__tag { position: absolute; z-index: 3; left: 50%; bottom: 5%; transform: translateX(-50%); text-align: center; }
+.cin-char__tag {
+  position: absolute; z-index: 3;
+  right: -1.5rem; top: 50%; transform: translateY(-50%) rotate(-90deg);
+  transform-origin: center center; text-align: center; white-space: nowrap;
+}
 .cin-char__tag b { display: block; font-family: "Bebas Neue", sans-serif; font-size: 1.5rem; color: #fff; letter-spacing: .04em; }
 .cin-char__tag span { font-family: "Montserrat", sans-serif; font-size: 9px; letter-spacing: .26em; text-transform: uppercase; color: var(--champ); }
+@media (max-width: 860px) {
+  .cin-char__tag { right: -0.5rem; }
+}
 .cin-char__img.is-missing { opacity: 0; }
 
 /* ---------- 13. ROTATING SCROLL BADGE ---------- */
@@ -252,13 +258,13 @@ body::after {
 .orb { position: absolute; z-index: 1; border-radius: 50%; pointer-events: none; will-change: transform;
   filter: blur(2px); opacity: .8; }
 .orb--1 { width: clamp(80px,10vw,150px); aspect-ratio: 1; top: 16%; left: 6%;
-  background: radial-gradient(35% 35% at 35% 30%, #fff6, transparent 60%), radial-gradient(circle at 60% 65%, #a7b8ff, #3a2b6e 70%); }
+  background: radial-gradient(35% 35% at 35% 30%, #333, transparent 60%), radial-gradient(circle at 60% 65%, #1a1a22, #050508 70%); }
 .orb--2 { width: clamp(60px,7vw,110px); aspect-ratio: 1; top: 62%; left: 12%;
-  background: radial-gradient(35% 35% at 35% 30%, #fff8, transparent 60%), radial-gradient(circle at 60% 65%, #f0abfc, #6e2b5e 70%); }
+  background: radial-gradient(35% 35% at 35% 30%, #2a2a30, transparent 60%), radial-gradient(circle at 60% 65%, #18161e, #08060c 70%); }
 .orb--3 { width: clamp(90px,11vw,170px); aspect-ratio: 1; top: 24%; right: 8%;
-  background: radial-gradient(35% 35% at 35% 30%, #fff7, transparent 60%), radial-gradient(circle at 60% 65%, #E8C87A, #6e5321 72%); }
+  background: radial-gradient(35% 35% at 35% 30%, #3a3a3a, transparent 60%), radial-gradient(circle at 60% 65%, #1c1c20, #080808 72%); }
 .orb--ring { width: clamp(110px,14vw,220px); aspect-ratio: 1; bottom: 10%; right: 14%;
-  background: none; border: 1px solid rgba(212,175,55,.35); box-shadow: 0 0 40px rgba(212,175,55,.12) inset; filter: none; opacity: .5; }
+  background: none; border: 1px solid rgba(255,255,255,.08); box-shadow: 0 0 40px rgba(0,0,0,.3) inset; filter: none; opacity: .5; }
 @media (max-width: 640px) { .orb--1, .orb--ring { display: none; } }
 
 /* ---------- 15. DYNAMIC SCROLL SHADE (moving light) ---------- */
@@ -305,8 +311,8 @@ body::after {
    ============================================================ */
 .hero-intro {
   position: relative; z-index: 2; overflow: hidden;
-  /* height matches the video's 16:9 ratio so nothing is cropped */
-  height: 0; padding-bottom: 56.25%; /* 9/16 = 56.25% */
+  /* constrain to viewport height so the video is never cropped */
+  height: min(56.25vw, 100svh);
 }
 
 /* background video — fills the aspect-ratio box edge to edge */
@@ -370,7 +376,7 @@ body::after {
 
 /* mobile: taller ratio, text at bottom */
 @media (max-width: 860px) {
-  .hero-intro { padding-bottom: 75%; }
+  .hero-intro { height: min(75vw, 100svh); }
   .hero-intro__content {
     top: auto; bottom: 1.5rem; transform: none;
     left: var(--pad); right: var(--pad); max-width: none;
@@ -381,21 +387,31 @@ body::after {
   }
 }
 @media (max-width: 520px) {
-  .hero-intro { padding-bottom: 90%; }
+  .hero-intro { height: min(130vw, 100svh); }
   .hero-intro__title { font-size: 1.4rem; }
   .hero-intro__desc { font-size: 0.85rem; }
 }
 
-/* sound toggle button */
+/* sound toggle button — large and prominent */
 .hero-intro__sound {
-  position: absolute; z-index: 3; bottom: 1.5rem; right: var(--pad, 2rem);
-  width: 44px; height: 44px; border-radius: 50%;
-  border: 1px solid rgba(255,255,255,.2);
-  background: rgba(0,0,0,.45); backdrop-filter: blur(8px);
-  color: #fff; display: flex; align-items: center; justify-content: center;
-  cursor: pointer; transition: background .3s, border-color .3s;
+  position: absolute; z-index: 3; bottom: 2rem; right: var(--pad, 2rem);
+  display: flex; align-items: center; gap: 0.6rem;
+  padding: 0.6rem 1.2rem 0.6rem 0.8rem; border-radius: 100px;
+  border: 1px solid rgba(212,175,55,.5);
+  background: rgba(0,0,0,.65); backdrop-filter: blur(10px);
+  color: #fff; cursor: pointer; transition: background .3s, border-color .3s;
+  animation: soundPulse 2s ease-in-out infinite;
 }
-.hero-intro__sound:hover { background: rgba(212,175,55,.2); border-color: var(--gold); }
+.hero-intro__sound:hover { background: rgba(212,175,55,.25); border-color: var(--gold); }
 .hero-intro__sound .ico-on { display: none; }
 .hero-intro__sound.is-on .ico-off { display: none; }
 .hero-intro__sound.is-on .ico-on  { display: block; }
+.hero-intro__sound.is-on { animation: none; border-color: var(--gold); }
+.hero-intro__sound-label {
+  font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase;
+  font-family: "Montserrat", sans-serif; font-weight: 500; color: var(--champ);
+}
+@keyframes soundPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(212,175,55,.4); }
+  50%      { box-shadow: 0 0 0 10px rgba(212,175,55,0); }
+}
