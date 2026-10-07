@@ -311,14 +311,14 @@ body::after {
    ============================================================ */
 .hero-intro {
   position: relative; z-index: 2; overflow: hidden;
-  /* constrain to viewport height so the video is never cropped */
-  height: min(56.25vw, 100svh);
+  height: 56.25vw; max-height: 100svh;
+  background: #000;
 }
 
-/* background video — fills the aspect-ratio box edge to edge */
+/* background video — fully visible, never cropped */
 .hero-intro__bg {
   position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-  object-fit: cover; object-position: center center;
+  object-fit: contain; object-position: center center;
   z-index: 0; display: block;
 }
 
@@ -330,10 +330,10 @@ body::after {
     linear-gradient(180deg, rgba(0,0,0,.25) 0%, transparent 30%, transparent 70%, rgba(0,0,0,.35) 100%);
 }
 
-/* text content — absolutely positioned over the left side of the video */
+/* text content — positioned over the left side of the video, slightly above center */
 .hero-intro__content {
   position: absolute; z-index: 2;
-  top: 50%; left: var(--pad); transform: translateY(-50%);
+  top: 42%; left: var(--pad); transform: translateY(-50%);
   max-width: 520px;
 }
 .hero-intro__label {
@@ -374,9 +374,9 @@ body::after {
 }
 .hero-intro__cta:hover { filter: brightness(1.12); }
 
-/* mobile: taller ratio, text at bottom */
+/* mobile: taller section, text at bottom */
 @media (max-width: 860px) {
-  .hero-intro { height: min(75vw, 100svh); }
+  .hero-intro { height: 75vw; max-height: 100svh; }
   .hero-intro__content {
     top: auto; bottom: 1.5rem; transform: none;
     left: var(--pad); right: var(--pad); max-width: none;
@@ -387,7 +387,7 @@ body::after {
   }
 }
 @media (max-width: 520px) {
-  .hero-intro { height: min(130vw, 100svh); }
+  .hero-intro { height: 130vw; max-height: 100svh; }
   .hero-intro__title { font-size: 1.4rem; }
   .hero-intro__desc { font-size: 0.85rem; }
 }
