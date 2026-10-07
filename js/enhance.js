@@ -114,7 +114,18 @@
     window.addEventListener("resize", upd); upd();
   }
 
-  function boot() { initIconCursor(); initCharacter(); initBadges(); initOrbs(); initShade(); }
+  /* ---------- 6. VIDEO SOUND TOGGLE ---------- */
+  function initVideoSound() {
+    var vid = document.getElementById("hero-vid");
+    var btn = document.getElementById("hero-sound");
+    if (!vid || !btn) return;
+    btn.addEventListener("click", function () {
+      vid.muted = !vid.muted;
+      btn.classList.toggle("is-on", !vid.muted);
+    });
+  }
+
+  function boot() { initIconCursor(); initCharacter(); initBadges(); initOrbs(); initShade(); initVideoSound(); }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot);
   else boot();
 })();

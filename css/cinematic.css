@@ -141,13 +141,13 @@
    Large portrait on one side, blended into black, with a big
    gradient headline, floating quote + signature on the other.
    ============================================================ */
-.cin-portrait { display: grid; gap: clamp(1.5rem, 4vw, 3rem); align-items: stretch;
+.cin-portrait { display: grid; gap: clamp(2rem, 4vw, 3rem); align-items: stretch;
   grid-template-columns: 1fr; }
 @media (min-width: 900px) { .cin-portrait { grid-template-columns: 1.05fr .95fr; align-items: center; } }
 
 /* ---- content side ---- */
-.cin-portrait__body { position: relative; z-index: 3; order: 2; }
-@media (min-width: 900px) { .cin-portrait__body { order: 1; } }
+.cin-portrait__body { position: relative; z-index: 3; order: 2; padding-bottom: 1rem; }
+@media (min-width: 900px) { .cin-portrait__body { order: 1; padding-bottom: 0; } }
 .cin-portrait__head {
   font-family: "Bebas Neue", "Syne", sans-serif; text-transform: uppercase;
   line-height: .82; letter-spacing: .01em; margin: .4rem 0 1.2rem;
